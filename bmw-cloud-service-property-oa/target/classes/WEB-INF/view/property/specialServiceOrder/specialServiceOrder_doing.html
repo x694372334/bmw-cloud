@@ -1,0 +1,89 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>特色服务管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row" style="margin-bottom:20px;">
+                            <div class="col-sm-3">
+                                <#select id="nId" name="小区">
+                                	<option value="">全部</option>
+                                	@for(n in nList){
+                                		<option value="${n.nId}">${n.nName}</option>
+                                	@}
+                                </#select>
+                            </div>
+                             <div class="col-sm-3">
+                                <#select id="serviceType" name="服务方式">
+                                	<option value="">全部</option>
+                                	@for(fwfs in fwfsList){
+                                		<option value="${fwfs.num}">${fwfs.name}</option>
+                                	@}
+                                </#select>
+                            </div>
+                             <div class="col-sm-3">
+                                <#select id="servicePaymentType" name="收费方式">
+                                	<option value="">全部</option>
+                                	@for(sffs in sffsList){
+                                		<option value="${sffs.num}">${sffs.name}</option>
+                                	@}
+                                </#select>
+                            </div>
+                           <div class="col-sm-3">
+                                <#select id="sOrderStatus" name="订单状态">
+                                	<option value="">全部</option>
+                                	@for(status in statusList){
+                                		<option value="${status.num}">${status.name}</option>
+                                	@}
+                                </#select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-3" style="margin-left:20px;">
+                             	<#NameCon id="serviceName" name="服务名" value='' />
+                            </div>
+                            <div class="col-sm-3" style="margin-left:-20px;">
+                            	<#input id="beginDate" name="开始时间" underline="false" type="datetime" 
+                            	clickFun="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/>
+                            </div>
+                             <div class="col-sm-3">
+                            	<#input id="endDate" name="结束时间" underline="false" type="datetime" 
+                            	clickFun="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"/>
+                            </div>
+                        	 <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="SpecialServiceOrder.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="SpecialServiceOrderTableToolbar" role="group">
+                        @if(shiro.hasPermission("/specialServiceOrder/open_recieve")){
+                            <#button name="接单" icon="fa-plus" clickFun="SpecialServiceOrder.openRecieve()"/>
+                        @}
+                        @if(shiro.hasPermission("/specialServiceOrder/open_send_order")){
+                            <#button name="派单" icon="fa-edit" clickFun="SpecialServiceOrder.openSendOrder()" space="true"/>
+                        @}
+                        @if(shiro.hasPermission("/specialServiceOrder/open_cancel_order")){
+                            <#button name="取消" icon="fa-edit" clickFun="SpecialServiceOrder.openCanelOrder()" space="true"/>
+                        @}
+                        @if(shiro.hasPermission("/specialServiceOrder/open_detail")){
+                            <#button name="详情" icon="fa-edit" clickFun="SpecialServiceOrder.openDetail()" space="true"/>
+                        @}
+                        @if(shiro.hasPermission("/specialServiceOrder/open_complaintDetail")){
+                            <#button name="投诉详情" icon="fa-edit" clickFun="SpecialServiceOrder.opencomplaintDetail()" space="true"/>   
+                        @}
+                        @if(shiro.hasPermission("/specialServiceOrder/open_fevaluateDetail")){
+                            <#button name="评价详情" icon="fa-edit" clickFun=" SpecialServiceOrder.openfevaluateDetail()" space="true"/>
+                        @}       
+                        </div>
+                        <#table id="SpecialServiceOrderTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/specialServiceOrder/specialServiceOrder_doing.js"></script>
+@}

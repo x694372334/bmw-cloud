@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bmw.base.module.account.mapper.AccountMapper" >
+    <resultMap id="BaseResultMap" type="com.bmw.base.module.account.domain.Account" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="account_name" property="accountName" jdbcType="VARCHAR" />
+        <result column="pet_name" property="petName" jdbcType="VARCHAR" />
+        <result column="pwd" property="pwd" jdbcType="VARCHAR" />
+        <result column="company" property="company" jdbcType="VARCHAR" />
+        <result column="dept_id" property="deptId" jdbcType="INTEGER" />
+        <result column="position_id" property="positionId" jdbcType="INTEGER" />
+        <result column="position_name" property="positionName" jdbcType="VARCHAR" />
+        <result column="phone" property="phone" jdbcType="VARCHAR" />
+        <result column="signature" property="signature" jdbcType="VARCHAR" />
+        <result column="dept_name" property="deptName" jdbcType="VARCHAR" />
+        <result column="create_id" property="createId" jdbcType="INTEGER" />
+        <result column="create_man" property="createMan" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+        <result column="edit_man_id" property="editManId" jdbcType="INTEGER" />
+        <result column="edit_man" property="editMan" jdbcType="VARCHAR" />
+        <result column="edit_time" property="editTime" jdbcType="TIMESTAMP" />
+    </resultMap>
+
+    <sql id="column" >
+        id, name, account_name, pet_name, pwd, company, dept_id, position_id, position_name, 
+        phone, signature, dept_name, create_id, create_man, create_time, edit_man_id, edit_man, 
+        edit_time
+    </sql>
+
+    <sql id="column2" >
+        sys_account.id, sys_account.name, sys_account.account_name, sys_account.pet_name, 
+        sys_account.pwd, sys_account.company, sys_account.dept_id, sys_account.position_id, 
+        sys_account.position_name, sys_account.phone, sys_account.signature, sys_account.dept_name, 
+        sys_account.create_id, sys_account.create_man, sys_account.create_time, sys_account.edit_man_id, 
+        sys_account.edit_man, sys_account.edit_time
+    </sql>
+
+    <sql id="column3" >
+        sys_account.id as id, sys_account.name as name, sys_account.account_name as accountName, 
+        sys_account.pet_name as petName, sys_account.pwd as pwd, sys_account.company as company, 
+        sys_account.dept_id as deptId, sys_account.position_id as positionId, sys_account.position_name as positionName, 
+        sys_account.phone as phone, sys_account.signature as signature, sys_account.dept_name as deptName, 
+        sys_account.create_id as createId, sys_account.create_man as createMan, sys_account.create_time as createTime, 
+        sys_account.edit_man_id as editManId, sys_account.edit_man as editMan, sys_account.edit_time as editTime
+    </sql>
+
+    <sql id="equal" >
+        <if test="id != null" >
+             AND id = #{id}
+        </if>
+        <if test="name != null and name != '' " >
+             AND name = #{name}
+        </if>
+        <if test="accountName != null and accountName != '' " >
+             AND account_name = #{accountName}
+        </if>
+        <if test="petName != null and petName != '' " >
+             AND pet_name = #{petName}
+        </if>
+        <if test="pwd != null and pwd != '' " >
+             AND pwd = #{pwd}
+        </if>
+        <if test="company != null and company != '' " >
+             AND company = #{company}
+        </if>
+        <if test="deptId != null" >
+             AND dept_id = #{deptId}
+        </if>
+        <if test="positionId != null" >
+             AND position_id = #{positionId}
+        </if>
+        <if test="positionName != null and positionName != '' " >
+             AND position_name = #{positionName}
+        </if>
+        <if test="phone != null and phone != '' " >
+             AND phone = #{phone}
+        </if>
+        <if test="signature != null and signature != '' " >
+             AND signature = #{signature}
+        </if>
+        <if test="deptName != null and deptName != '' " >
+             AND dept_name = #{deptName}
+        </if>
+        <if test="createId != null" >
+             AND create_id = #{createId}
+        </if>
+        <if test="createMan != null and createMan != '' " >
+             AND create_man = #{createMan}
+        </if>
+        <if test="createTime != null" >
+             <![CDATA[ AND create_time = #{createTime} ]]>
+        </if>
+        <if test="editManId != null" >
+             AND edit_man_id = #{editManId}
+        </if>
+        <if test="editMan != null and editMan != '' " >
+             AND edit_man = #{editMan}
+        </if>
+        <if test="editTime != null" >
+             <![CDATA[ AND edit_time = #{editTime} ]]>
+        </if>
+    </sql>
+
+    <sql id="like" >
+        <if test="id != null" >
+             AND id like CONCAT('%',#{id},'%')
+        </if>
+        <if test="name != null and name != '' " >
+             AND name like CONCAT('%',#{name},'%')
+        </if>
+        <if test="accountName != null and accountName != '' " >
+             AND account_name like CONCAT('%',#{accountName},'%')
+        </if>
+        <if test="petName != null and petName != '' " >
+             AND pet_name like CONCAT('%',#{petName},'%')
+        </if>
+        <if test="pwd != null and pwd != '' " >
+             AND pwd like CONCAT('%',#{pwd},'%')
+        </if>
+        <if test="company != null and company != '' " >
+             AND company like CONCAT('%',#{company},'%')
+        </if>
+        <if test="deptId != null" >
+             AND dept_id like CONCAT('%',#{deptId},'%')
+        </if>
+        <if test="positionId != null" >
+             AND position_id like CONCAT('%',#{positionId},'%')
+        </if>
+        <if test="positionName != null and positionName != '' " >
+             AND position_name like CONCAT('%',#{positionName},'%')
+        </if>
+        <if test="phone != null and phone != '' " >
+             AND phone like CONCAT('%',#{phone},'%')
+        </if>
+        <if test="signature != null and signature != '' " >
+             AND signature like CONCAT('%',#{signature},'%')
+        </if>
+        <if test="deptName != null and deptName != '' " >
+             AND dept_name like CONCAT('%',#{deptName},'%')
+        </if>
+        <if test="createId != null" >
+             AND create_id like CONCAT('%',#{createId},'%')
+        </if>
+        <if test="createMan != null and createMan != '' " >
+             AND create_man like CONCAT('%',#{createMan},'%')
+        </if>
+        <if test="createTime != null" >
+             AND create_time like CONCAT('%',#{createTime},'%')
+        </if>
+        <if test="editManId != null" >
+             AND edit_man_id like CONCAT('%',#{editManId},'%')
+        </if>
+        <if test="editMan != null and editMan != '' " >
+             AND edit_man like CONCAT('%',#{editMan},'%')
+        </if>
+        <if test="editTime != null" >
+             AND edit_time like CONCAT('%',#{editTime},'%')
+        </if>
+    </sql>
+
+    <insert id="add" parameterType="com.bmw.base.module.account.domain.Account" >
+        insert into sys_account
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="name != null and name != '' " >
+                name,
+            </if>
+            <if test="accountName != null and accountName != '' " >
+                account_name,
+            </if>
+            <if test="petName != null and petName != '' " >
+                pet_name,
+            </if>
+            <if test="pwd != null and pwd != '' " >
+                pwd,
+            </if>
+            <if test="company != null and company != '' " >
+                company,
+            </if>
+            <if test="deptId != null" >
+                dept_id,
+            </if>
+            <if test="positionId != null" >
+                position_id,
+            </if>
+            <if test="positionName != null and positionName != '' " >
+                position_name,
+            </if>
+            <if test="phone != null and phone != '' " >
+                phone,
+            </if>
+            <if test="signature != null and signature != '' " >
+                signature,
+            </if>
+            <if test="deptName != null and deptName != '' " >
+                dept_name,
+            </if>
+            <if test="createId != null" >
+                create_id,
+            </if>
+            <if test="createMan != null and createMan != '' " >
+                create_man,
+            </if>
+            <if test="createTime != null" >
+                create_time,
+            </if>
+            <if test="editManId != null" >
+                edit_man_id,
+            </if>
+            <if test="editMan != null and editMan != '' " >
+                edit_man,
+            </if>
+            <if test="editTime != null" >
+                edit_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="name != null and name != '' " >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="accountName != null and accountName != '' " >
+                #{accountName,jdbcType=VARCHAR},
+            </if>
+            <if test="petName != null and petName != '' " >
+                #{petName,jdbcType=VARCHAR},
+            </if>
+            <if test="pwd != null and pwd != '' " >
+                #{pwd,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null and company != '' " >
+                #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="deptId != null" >
+                #{deptId,jdbcType=INTEGER},
+            </if>
+            <if test="positionId != null" >
+                #{positionId,jdbcType=INTEGER},
+            </if>
+            <if test="positionName != null and positionName != '' " >
+                #{positionName,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null and phone != '' " >
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null and signature != '' " >
+                #{signature,jdbcType=VARCHAR},
+            </if>
+            <if test="deptName != null and deptName != '' " >
+                #{deptName,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null" >
+                #{createId,jdbcType=INTEGER},
+            </if>
+            <if test="createMan != null and createMan != '' " >
+                #{createMan,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="editManId != null" >
+                #{editManId,jdbcType=INTEGER},
+            </if>
+            <if test="editMan != null and editMan != '' " >
+                #{editMan,jdbcType=VARCHAR},
+            </if>
+            <if test="editTime != null" >
+                #{editTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from sys_account
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <update id="update" parameterType="com.bmw.base.module.account.domain.Account" >
+        update sys_account
+        <set >
+            <if test="name != null and name != '' " >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="accountName != null and accountName != '' " >
+                account_name = #{accountName,jdbcType=VARCHAR},
+            </if>
+            <if test="petName != null and petName != '' " >
+                pet_name = #{petName,jdbcType=VARCHAR},
+            </if>
+            <if test="pwd != null and pwd != '' " >
+                pwd = #{pwd,jdbcType=VARCHAR},
+            </if>
+            <if test="company != null and company != '' " >
+                company = #{company,jdbcType=VARCHAR},
+            </if>
+            <if test="deptId != null" >
+                dept_id = #{deptId,jdbcType=INTEGER},
+            </if>
+            <if test="positionId != null" >
+                position_id = #{positionId,jdbcType=INTEGER},
+            </if>
+            <if test="positionName != null and positionName != '' " >
+                position_name = #{positionName,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null and phone != '' " >
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="signature != null and signature != '' " >
+                signature = #{signature,jdbcType=VARCHAR},
+            </if>
+            <if test="deptName != null and deptName != '' " >
+                dept_name = #{deptName,jdbcType=VARCHAR},
+            </if>
+            <if test="createId != null" >
+                create_id = #{createId,jdbcType=INTEGER},
+            </if>
+            <if test="createMan != null and createMan != '' " >
+                create_man = #{createMan,jdbcType=VARCHAR},
+            </if>
+            <if test="createTime != null" >
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="editManId != null" >
+                edit_man_id = #{editManId,jdbcType=INTEGER},
+            </if>
+            <if test="editMan != null and editMan != '' " >
+                edit_man = #{editMan,jdbcType=VARCHAR},
+            </if>
+            <if test="editTime != null" >
+                edit_time = #{editTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="column" />
+        from sys_account
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="findLike" resultType="Account" parameterType="Account" >
+        select 
+        <include refid="column3" />
+        from sys_account
+        <where >
+            <include refid="like" />
+        </where>
+    </select>
+
+    <select id="findList" resultType="Account" parameterType="Account" >
+        select 
+        <include refid="column3" />
+        from sys_account
+        <where >
+            <include refid="equal" />
+        </where>
+    </select>
+</mapper>

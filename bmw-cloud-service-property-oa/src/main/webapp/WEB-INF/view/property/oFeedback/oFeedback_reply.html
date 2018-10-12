@@ -1,0 +1,37 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+
+			<input type="hidden" id="id" value="${item.id}">
+
+			<div class="row" style="width:500px;">
+				<div class="col-sm-12 b-r" style="margin-left:-45px;">
+					<strong style="width:126px;float:left;display:block;margin-right:10px;text-align:right;">反馈意见</strong>
+					<input class="form-control" style="width:350px" id="opinion" name="反馈意见" value="${item.opinion}" underline="true"  readonly="true"/>					
+				</div>
+			</div>
+			<div style="height:20px;"></div>
+			<div class="row" style="width:500px;">
+				<div class="col-sm-12 b-r" style="margin-left:-45px;">
+					<strong style="width:126px;float:left;display:block;margin-right:10px;text-align:right;">物业处理结果</strong>
+					<input class="form-control" style="width:350px" id="handlingResult" name="物业处理结果" value="${item.handlingResult}" underline="true" />
+				</div>
+			</div>
+
+
+
+			<div class="row btn-group-m-t">
+				<div class="col-sm-10">
+					<#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+						clickFun="OFeedbackInfoDlg.replySubmit()" />
+					<#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+						clickFun="OFeedbackInfoDlg.close()" />
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script src="${ctxPath}/static/bmw/property/oFeedback/oFeedback_info.js"></script>
+@}

@@ -1,0 +1,134 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="neighborhoodInfoForm">
+
+            <input type="hidden" id="id" value="">
+            <input type="hidden" id="adCode" value="">
+            <input type="hidden" id="adName" value="">
+            <input type="hidden" id="eId" value="${item.eId}">
+            <input type="hidden" id="data" value="${data}">
+            
+			<div class="row">             
+				<div class="col-sm-6 b-r">
+					<#input style="margin-left:27px;" class="form-control" id="nName" name="小区名称" required="true" underline="true"/>
+	            	
+	            </div>
+	            <div class="col-sm-6 b-r">		
+		            	  <#input style="margin-left:25px;" class="form-control" id="nArchitectureArea" required="true" name="建筑面积" underline="true"/>  
+		        </div>		
+	        </div>
+	         <div class="row">   
+	         		<div class="col-sm-6 b-r">	 	
+		            	 <#input style="margin-left:25px;" class="form-control" id="nAddress" required="true" name="详细地址"  underline="true"/>
+					     
+				    </div>
+				     <div class="col-sm-6 b-r">				     
+	              		<#input style="width:643px;margin-left:25px;" class="form-control" required="true" id="serviceTel" name="客服电话" underline="true"/>
+	              			     
+	              </div>
+			</div>
+	             				
+	            
+	              			 
+	            			      
+             </div> 	
+             
+             <div class="row"> 		     
+	             <div class="col-sm-6 b-r">	  
+	             	 <input type="hidden" id="adName" value=""/>			     
+	              		<#input class="form-control" id="pInCharge" name="物业负责人" required="true" underline="true"/>
+	            		<div style="height:27px;"></div>
+	         	 </div> 
+	         	 <div class="col-sm-6 b-r">	 
+	              	<strong style="width:100px;float:left;display:block;margin-right:-10px;margin-top:5px;">物业负责人电话<span style="color:red;">*</span></strong>		     
+	              	<#input style="margin-top:-15px;" class="form-control" id="pICTel" name="" underline="true"/>
+	              	<div style="height:27px;"></div>		        
+	             </div> 
+             </div>
+
+               
+                <div class="row"> 
+	                <div class="col-sm-6 b-r">
+	                	<#input class="form-control" id="nPublicArea" name="公共场所面积" required="true" underline="true"/>  
+	                    <div style="height:27px;"></div>
+	                 </div> 
+	                 <div class="col-sm-6 b-r">
+	                     <#input class="form-control" id="nGreenArea" name="绿化面积" required="true" underline="true"/> 
+	              		 <div style="height:27px;"></div>
+	           		</div>
+	            </div>	     
+	            <div class="row">
+	            	<div class="col-sm-6 b-r">
+	            		<#input class="form-control" id="nCoveredArea" name="占地面积" required="true" underline="true"/> 
+	              	    <div style="height:27px;"></div>
+	              	</div>		     
+	              	<div class="col-sm-6 b-r">		    
+	              		<#input class="form-control" id="cArea" name="车库面积" required="true" underline="true"/> 
+	              		<div style="height:27px;"></div>
+	              	</div>
+	            </div>  			     
+	            <div class="row">  	
+		            <div class="col-sm-6 b-r">	
+		            	  <#input class="form-control" id="nRoomTime" name="交房时间" required="true" underline="true" type="datetime" clickFun="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss '})"/>
+	              		  <div style="height:27px;"></div>   
+		            </div>  
+					<div class="col-sm-6 b-r">	
+	              		 <#input  class="form-control" id="remarks" name="备注" underline="true"/> 
+	              		 <div style="height:27px;"></div>
+	              	</div>			     
+	            </div>  	
+	             <div class="row">  	
+		            <div class="col-sm-6 b-r">	
+		            	  <#input class="form-control" id="enterpriseName" name="物业名称" disabled="disabled" value="${item.enterpriseName}" required="true" underline="true"/> 
+	              		  <div style="height:27px;"></div>   
+		            </div>  
+	            </div>  			    
+	              			     
+	              			    
+	     <div class="row"> 
+              <div class="col-sm-4 b-r">	  			     
+              			     <strong style="width:100px;display:block;text-align:center;">小区地址<span style="color:red;">*</span></strong>
+              		
+              			     <#select style="width:200px !important;" class="form-control" id="test" name="省" underline="true"></#select>
+              			     <div style="height:27px;"></div>
+             </div>  			     
+              <div class="col-sm-4 b-r" style="margin-top:17px;margin-left:-44px;" >			    
+              	 			 <#select style="width:200px !important;" class="form-control" id="test1" name="市" underline="true"></#select>
+              	 			 <div style="height:27px;"></div>
+              </div>	 			 
+              <div class="col-sm-4 b-r" style="margin-top:17px;margin-left:-44px;">	 			 
+              	 			 <#select style="width:200px;" class="form-control" id="test2" name="区" underline="true"></#select>
+			              	 <div style="height:27px;"></div>
+			              	 
+			   </div>
+             </div>  
+            
+            
+            
+            
+            
+            </div>
+            <div class="row">
+            <div class="col-sm-12 b-r">
+             <strong style="width:100px;float:left;display:block;margin:0 -5px 0 -5px;text-align:center;">小区简介</strong>
+             <textarea id="nDescription" class="form-control"  rows="4" cols="2" style="width:915px;"></textarea>
+             <div class="hr-line-dashed"></div>
+            <#avatar id="nImages" name="小区图片" underline="true" inputData="true" />  
+            </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="NeighborhoodInfoInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="NeighborhoodInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+<script src="${ctxPath}/static/bmw/property/neighborhood/neighborhoodInfo_info.js"></script>
+@}
+                

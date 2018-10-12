@@ -1,0 +1,61 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="bId">
+             <input type="hidden" id="nId">
+
+            <div class="row">
+                <div class="col-sm-12 b-r">
+                 <#input  id="import"  type="file" name="" style="display:none" hidden="true"  clickFun="RoomInfoInfoDlg.openReader()"/>
+ 				 <label class="col-sm-12 ">批量导入说明：</label><br>
+           	</div>
+            </div>
+            <div class="row">
+            <div class="col-sm-12 b-r">
+            <label class="col-sm-12 ">1.清先下载模板</label><br>
+            </div>
+            </div>
+             <div class="row">
+            <div class="col-sm-12 b-r">
+             <label class="col-sm-12">2.根据模板提示填写数值</label><br>
+            </div>
+            </div>
+             <div class="row">
+            <div class="col-sm-12 b-r">
+             <label class="col-sm-12 ">3.上传修改好后的模板</label><br>
+            </div>
+            </div>
+             <div class="row">
+            <div class="col-sm-12 b-r">
+             <label class="col-sm-3 ">4.点击“批量导入”</label><br>
+            </div>
+            </div>
+             <div class="row">
+            <div class="col-sm-12 b-r">
+              <#select id="reader_test" name="所属小区" underline="false"></#select>
+            </div>
+            </div>
+            <div class="row">
+				<div class="col-sm-1"></div>
+				<div class="col-sm-11">
+				
+					<h4>上传Excel</h4>
+					<input id="input-id" type="file" name="file" multiple  data-show-preview="false" data-show-caption="true"></input>
+						<p class="help-block">支持xlsx、xls格式，大小不超过20.0M</p>
+						<input id="contentImg" type="hidden" value="" />
+				</div>
+			</div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="下载模板" id="ensure" icon="fa-check" clickFun="RoomInfoInfoDlg.downloadExcel()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="${ctxPath}/static/js/plugins/wangEditor/wangEditor.js"></script>
+<script src="${ctxPath}/static/bmw/property/roomInfo/roomInfo_info.js"></script>
+@}

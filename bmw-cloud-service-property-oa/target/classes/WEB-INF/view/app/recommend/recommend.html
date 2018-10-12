@@ -1,0 +1,38 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>君办推荐管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="condition" name="名称" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="Recommend.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="RecommendTableToolbar" role="group">
+                            @if(shiro.hasPermission("/recommend/add")){
+                                <#button name="添加" icon="fa-plus" clickFun="Recommend.openAddRecommend()"/>
+                            @}
+                            @if(shiro.hasPermission("/recommend/update")){
+                                <#button name="修改" icon="fa-edit" clickFun="Recommend.openRecommendDetail()" space="true"/>
+                            @}
+                            @if(shiro.hasPermission("/recommend/delete")){
+                                <#button name="删除" icon="fa-remove" clickFun="Recommend.delete()" space="true"/>
+                            @}
+                        </div>
+                        <#table id="RecommendTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/app/recommend/recommend.js"></script>
+@}

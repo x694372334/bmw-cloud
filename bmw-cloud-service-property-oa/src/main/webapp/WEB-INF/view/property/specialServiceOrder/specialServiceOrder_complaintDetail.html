@@ -1,0 +1,51 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+			<input type="hidden" id="orderId" value=${order.orderId}>
+			<div class="row">
+				<div class="col-sm-6">
+					<ul class="list-group">	
+						<li class="list-group-item"><span class="text-success">申请人:</span>${order.complaintUserName}</li>
+						<li class="list-group-item"><span class="text-success" >小区:</span>${order.nName}</li>
+						<li class="list-group-item"><span class="text-success" >房间号:</span>${order.rNum}</li>
+						
+					</ul>
+				</div>
+				<div class="col-sm-6">
+					<ul class="list-group">	
+						<li class="list-group-item"><span class="text-success">服务类别：</span>${order.serviceSortName}</li>
+						<li class="list-group-item"><span class="text-success">服务方式：</span>${order.serviceTypeName}
+							<#button btnCss="warning" name="服务详情" id="cancel" icon="fa-eraser" clickFun="SpecialServiceOrderDetail.openService(${order.serviceId})"/>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<h4>
+					<span class="text-success">问题反馈</span>
+				</h4>
+				<div class="panel panel-default">
+					<div class="panel-body">${order.complaintContent}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<h4>回复</h4>
+					<textarea id="remarkContent" class="form-control"  rows="4" cols="2" >${order.replyComplaint}</textarea>
+				</div>
+			</div>
+			
+			<div class="row btn-group-m-t">
+               	@if(order.complaintStatus==1){
+                	<#button btnCss="info" name="提交回复" id="ensure" icon="fa-check" clickFun="SpecialServiceOrderDetail.replyComplaint()"/>            	              
+               	@}
+               <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="SpecialServiceOrderDetail.close()" />
+			</div>
+		</div>
+
+	</div>
+</div>
+<script
+	src="${ctxPath}/static/bmw/property/specialServiceOrder/specialServiceOrder_detail.js"></script>
+@}

@@ -1,0 +1,40 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="dId" name="文档id" underline="true"/>
+                            <#input id="nId" name="小区id" underline="true"/>
+                            <#input id="dName" name="文档名称" underline="true"/>
+                            <#input id="dUrl" name="文档url" underline="true"/>
+                            <#input id="upUser" name="上传人" underline="true"/>
+                            <#input id="upTime" name="上传时间" underline="true"/>
+                            <#input id="createManId" name="创建人id"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="createMan" name="创建人" underline="true"/>
+                            <#input id="createTime" name="创建时间" underline="true"/>
+                            <#input id="editManId" name="修改人id" underline="true"/>
+                            <#input id="editMan" name="修改人" underline="true"/>
+                            <#input id="editTime" name="修改时间" underline="true"/>
+                            <#input id="isDelete" name="是否删除1未删除2已删除" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="WDocumentsInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="WDocumentsInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/wdocuments/wDocuments_info.js"></script>
+@}

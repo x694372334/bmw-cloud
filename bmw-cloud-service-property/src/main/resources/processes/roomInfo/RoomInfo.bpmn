@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/test">
+  <process id="roomInfo" name="roomInfo" isExecutable="true">
+    <startEvent id="roomInfo_start" name="Start"></startEvent>
+    <userTask id="roomInfo_application" name="申请认证" activiti:assignee="${eaUser}"></userTask>
+    <userTask id="roomInfo_approvel" name="审核认证" activiti:formKey="/inhabitantInfo/inhabitantInfo_discounts_approval/${inhabitantInfoId}">
+      <extensionElements>
+        <activiti:taskListener event="create" class="com.bmw.flowable.listen.room.roomInfoHandler"></activiti:taskListener>
+      </extensionElements>
+    </userTask>
+    <endEvent id="roomInfo_end" name="End"></endEvent>
+    <sequenceFlow id="flow1" sourceRef="roomInfo_start" targetRef="roomInfo_application"></sequenceFlow>
+    <sequenceFlow id="flow2" name="发送申请" sourceRef="roomInfo_application" targetRef="roomInfo_approvel"></sequenceFlow>
+    <sequenceFlow id="flow3" name="认证成功" sourceRef="roomInfo_approvel" targetRef="roomInfo_end">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outcome=='1'}]]></conditionExpression>
+    </sequenceFlow>
+    <sequenceFlow id="flow4" name="驳回认证" sourceRef="roomInfo_approvel" targetRef="roomInfo_application">
+      <conditionExpression xsi:type="tFormalExpression"><![CDATA[${outcome=='0'}]]></conditionExpression>
+    </sequenceFlow>
+  </process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_roomInfo">
+    <bpmndi:BPMNPlane bpmnElement="roomInfo" id="BPMNPlane_roomInfo">
+      <bpmndi:BPMNShape bpmnElement="roomInfo_start" id="BPMNShape_roomInfo_start">
+        <omgdc:Bounds height="35.0" width="35.0" x="40.0" y="220.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="roomInfo_application" id="BPMNShape_roomInfo_application">
+        <omgdc:Bounds height="55.0" width="105.0" x="150.0" y="210.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="roomInfo_approvel" id="BPMNShape_roomInfo_approvel">
+        <omgdc:Bounds height="55.0" width="105.0" x="346.0" y="310.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="roomInfo_end" id="BPMNShape_roomInfo_end">
+        <omgdc:Bounds height="35.0" width="35.0" x="550.0" y="320.0"></omgdc:Bounds>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="flow1" id="BPMNEdge_flow1">
+        <omgdi:waypoint x="75.0" y="237.0"></omgdi:waypoint>
+        <omgdi:waypoint x="150.0" y="237.0"></omgdi:waypoint>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow2" id="BPMNEdge_flow2">
+        <omgdi:waypoint x="202.0" y="265.0"></omgdi:waypoint>
+        <omgdi:waypoint x="398.0" y="310.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14.0" width="48.0" x="237.0" y="264.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow3" id="BPMNEdge_flow3">
+        <omgdi:waypoint x="451.0" y="337.0"></omgdi:waypoint>
+        <omgdi:waypoint x="550.0" y="337.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14.0" width="48.0" x="451.0" y="337.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="flow4" id="BPMNEdge_flow4">
+        <omgdi:waypoint x="346.0" y="337.0"></omgdi:waypoint>
+        <omgdi:waypoint x="202.0" y="337.0"></omgdi:waypoint>
+        <omgdi:waypoint x="202.0" y="265.0"></omgdi:waypoint>
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds height="14.0" width="48.0" x="261.0" y="337.0"></omgdc:Bounds>
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>

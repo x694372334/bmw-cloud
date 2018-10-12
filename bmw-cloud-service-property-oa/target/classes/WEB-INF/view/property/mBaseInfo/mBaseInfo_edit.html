@@ -1,0 +1,29 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="mBaseInfoForm">
+
+            <input type="hidden" id="sId" value="${item.sId}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+         			  <#input id="mMultiple" name="倍率"  value="${item.mMultiple}" underline="true" required="true"/>    
+					 <#input id="mWastage" name="耗损"  value="${item.mWastage}" underline="true" required="true"/>    
+					 <#input id="mCommonality" name="公摊"  value="${item.mCommonality}" underline="true" required="true"/>   
+					  <#input id="tableNumber" name="表号" underline="true" required="true" value="${item.tableNumber}"/>      
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="MBaseInfoInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="MBaseInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript" src="//unpkg.com/wangeditor/release/wangEditor.min.js"></script>
+<script src="${ctxPath}/static/bmw/property/mBaseInfo/mBaseInfo_info.js"></script>
+@}
+                

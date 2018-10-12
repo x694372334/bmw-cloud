@@ -1,0 +1,64 @@
+@layout("/common/_container.html"){
+<script type="text/javascript">
+$(function () {
+	var it = $("#mennuIds").val();
+	var arr = $.parseJSON(it);
+	$.each(arr,function(index,value){
+		$("#"+value).attr("checked",true);
+	});
+	
+	var roleId = $("#roleId").val();
+	
+	var index = parent.layer.getFrameIndex(window.name); //获取窗口索引
+
+    $("#btn_close").bind("click", function () {
+        parent.layer.close(index);
+    });
+
+    $("#btn_save").bind("click", function () {
+       var param = "";
+       $(".menuIds").each(function(j,item){
+    	   if(item.checked){
+    		   param = param +item.value + ",";
+    	   }
+    	});
+       var ajax = new $ax(Feng.ctxPath + "/role/setAppAuthority", function () {
+           Feng.success("分配成功!");
+           parent.layer.close(index);
+       }, function (data) {
+           Feng.error("分配失败!" + data.responseJSON.message + "!");
+       });
+       ajax.set("menuIds", param);
+       ajax.set("roleId", roleId);
+       ajax.start();
+    });
+
+});
+
+</script>
+
+
+<div class="container"
+	style="padding: 0px 10px !important; margin-top: -10px; text-align: center !important;">
+	<input type="hidden" id="roleId" value="${roleId}">
+	<input type="hidden" id="mennuIds" value="${mennuIds}">
+	<div class="row">
+		@for(item in appMenuList){ 
+		  <input type="checkbox" class="menuIds" id="${item.mId}" value=${item.mId} />${item.menuName}
+		   <br />
+		   <br />
+	    @}
+	</div>
+	<div class="row">
+		<div class="col-md-12">
+			<button class="btn btn-sm btn-info" type="button" id="btn_save">
+				<i class="ace-icon fa fa-check bigger-110"></i>保存
+			</button>
+			&nbsp;
+			<button class="btn btn-sm btn-danger" type="button" id="btn_close">
+				<i class="ace-icon fa fa-close bigger-110"></i>关闭
+			</button>
+		</div>
+	</div>
+</div>
+@}

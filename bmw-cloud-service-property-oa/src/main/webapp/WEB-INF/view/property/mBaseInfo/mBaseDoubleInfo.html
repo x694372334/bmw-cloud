@@ -1,0 +1,41 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>抄表审核管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="nName" name="小区名" />
+                            </div>
+                             <div class="col-sm-3">
+                                <#NameCon id="bName" name="楼宇名" />
+                            </div>
+                             <div class="col-sm-3">
+                                <#NameCon id="rRoomnum" name="房间号" />
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="MBaseInfo.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="MBaseInfoTableToolbar" role="group">
+                       			 @if(shiro.hasPermission("/mBaseDoubleInfo/mBaseInfo_approval")){
+                                <#button name="审核" icon="fa-plus" clickFun="MBaseInfo.openMBaseInfoApproval()"/>
+                                 @}
+ 								 @if(shiro.hasPermission("/mBaseInfo/saveBills")){
+    			                <#button name="一键生成账单" icon="fa-edit" clickFun="MBaseInfo.saveBills()" space="true"/>
+    			                 @}
+                        </div>
+                        <#table id="MBaseInfoTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/mBaseInfo/mBaseDoubleInfo.js"></script>
+@}

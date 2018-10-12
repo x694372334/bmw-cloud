@@ -1,0 +1,59 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="repairsFormForm">
+
+        <input type="hidden" id="formId" value=${form.id}>
+		<div class="row">
+			<div class="col-sm-6">
+					<ul class="list-group">
+						<li class="list-group-item"><span class="text-success">维修地址：</span>${form.repairsAddr}</li>
+						<li class="list-group-item"><span class="text-success">业主姓名：</span>${form.ownerName}</li>
+						<li class="list-group-item"><span class="text-success">房屋号：</span>${form.roomNum}</li>
+						<li class="list-group-item"><span class="text-success">联系电话：</span>${form.ownerPhoneNo}</li>
+						<li class="list-group-item"><span class="text-success">发起人：</span>${form.initiatorName}</li>
+						<li class="list-group-item"><span class="text-success">预约上门查看时间：</span>${form.probablyArriveTime,dateFormat="yyyy-MM-dd HH:mm:ss"}</li>
+						<li class="list-group-item"><span class="text-success">实际上门查看时间：</span>${form.actualArriveTime,dateFormat="yyyy-MM-dd HH:mm:ss"}</li>
+						<li class="list-group-item"><span class="text-success">预计完成时间：</span>${form.probablyCompleteTime,dateFormat="yyyy-MM-dd HH:mm:ss"}</li>
+						<li class="list-group-item"><span class="text-success">实际完成时间：</span>${form.actualCompleteTime,dateFormat="yyyy-MM-dd HH:mm:ss"}</li>
+						<li class="list-group-item"><span class="text-success">报修描述：</span>${form.contentText}</li>
+						@if(form.status==7){
+							<li class="list-group-item"><span class="text-success">驳回原因：</span>${form.refuseReason}</li>
+						@}
+
+					</ul>
+				</div>
+			<div class="col-sm-6">
+				<div style="height:390px;width:340px;border:solid 1px #ccc;">
+				@if(form.contentImg!=null&&form.contentImg!=''){
+					<a href="javascript:RepairsFormDetailDlg.loadImages('${form.id}')"><img alt="点击查看大图" src="${form.contentImg}" width="340px"></a>
+				@}else{
+					<h1>没有上传图片</h1>
+				@}
+				</div>
+			</div>
+		</div>
+        <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                	@if(form.status==1){
+	                	<#button btnCss="info" name="预计上门查看" id="ensure" icon="fa-check" clickFun="RepairsFormDetailDlg.door2see()"/>            	              
+                	@}
+                	@else if(form.status==2){
+	                	<#button btnCss="info" name="接受订单" id="ensure" icon="fa-check" clickFun="RepairsFormDetailDlg.receive()"/>            	              
+                	@}else if(form.status==3){
+                		<#button btnCss="info" name="完成维修" id="ensure" icon="fa-check" clickFun="RepairsFormDetailDlg.complete()"/> 
+                	@}
+                	@if(form.status==1||form.status==2){
+                		<#button btnCss="info" name="驳回" id="ensure" icon="fa-check" clickFun="RepairsFormDetailDlg.refuse()"/> 
+                  	@}else {
+                  		<#button btnCss="info" name="驳回" id="ensure" icon="fa-check" clickFun="RepairsFormDetailDlg.refuse()" disabled="true"/> 
+                  	@}         
+                  <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="RepairsFormDetailDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/repairsForm/repairsForm_detail.js"></script>
+@}

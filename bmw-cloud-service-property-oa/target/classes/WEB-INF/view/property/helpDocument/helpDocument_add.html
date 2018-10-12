@@ -1,0 +1,75 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="helpDocumentForm">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <input id="fileId" type="hidden" />
+                           <!--  <#input id="id" name="主键id" underline="true"/>
+                            <#input id="helpDocumentType" name="分类名称" underline="true"/>
+                            <#input id="helpDocumentTypeId" name="分类ID" underline="true"/> -->
+                            <#input id="title" name="标题" required="true"  underline="true"/>
+                            <#input id="keyword" name="关键字" underline="true"/>
+                            <!-- <#input id="content" name="内容" underline="true"/> -->
+                           <!--  <#input id="createId" name="创建人ID" underline="true"/>
+                            <#input id="createMan" name="创建人" underline="true"/>
+                            <#input id="createTime" name="创建时间"/> -->
+                </div>
+
+                <div class="col-sm-6">
+                <#input id="helpDocumentType" name="分类" required="true" underline="true"
+                            hidden="helpDocumentTypeId" readonly="readonly"
+							clickFun="HelpDocumentInfoDlg.showhelpDocumentTypeSelectTree(); return false;"
+							style="background-color: #ffffff !important;"
+							selectFlag="true" selectId="pcodeTreeDiv" selectTreeId="pcodeTree" selectStyle="width:244px !important;"/>
+                          <!--   <#input id="editManId" name="修改人id" underline="true"/>
+                            <#input id="editMan" name="修改人" underline="true"/>
+                            <#input id="editTime" name="修改时间" underline="true"/>
+                            <#input id="fileName" name="附件文件名" underline="true"/>
+                            <#input id="filePath" name="附件文件路径" underline="true"/>
+                            <#input id="fileFormat" name="附件文件格式" underline="true"/> -->
+                            
+                </div>
+			</div>
+
+			<div class="form-group">
+				<label class="col-sm-1 control-label" style="width:90px !important;">内容</label>
+				<div class="col-sm-11">
+					<div id="editor" class="editorHeight" style="width:615px;margin-left:90px;margin-top:-20px;"></div>
+				</div>
+			</div>
+
+			<div class="ibox float-e-margins" style="margin-left:95px;width:620px;">
+				<form id="form" action="" method="post"
+					enctype="multipart/form-data">
+					<div class="row form-group">
+						<div class="panel panel-primary">
+							<div class="panel-heading" align="center">
+								<label style="text-align: center; font-size: 18px;">上传附件</label>
+							</div>
+							<div class="panel-body">
+								<div class="col-sm-12">
+									<input id="input-id" name="file" multiple type="file"
+										data-show-preview="false" data-show-caption="true">
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="HelpDocumentInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="HelpDocumentInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/js/plugins/wangEditor/wangEditor.js"></script>
+<script src="${ctxPath}/static/bmw/property/helpDocument/helpDocument_info.js"></script>
+@}

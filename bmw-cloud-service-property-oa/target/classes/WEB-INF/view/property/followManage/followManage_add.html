@@ -1,0 +1,52 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="followManageForm">
+
+            <input type="hidden" id="id" value="">
+                   
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="ownerName" name="业主姓名" underline="true"/>
+                            <#input id="phone" name="联系电话" underline="true"/>
+                </div>
+                <div class="col-sm-6">
+                 <#input id="receiverName" name="接待人" underline="true"/>
+                  <#input id="contact" name="联系时间" underline="true" type="datetime"
+								clickFun="laydate({istime: true, format: 'YYYY-MM-DD hh:mm'})"/>
+                </div>
+               
+            </div>
+              <div class="row">
+              	
+                            <div class="form-group">
+                        <label class="col-sm-2 control-label">联系事项</label>
+                        <div class="col-sm-10">
+                            <textarea id="contactMatters" name="contactMatters" maxlength="200" class="form-right" style="width:680px" rows="4"></textarea>
+                            </div>
+                        </div>
+                    </div>
+               <div class="row">
+                    
+                         <div class="form-group">
+                        <label class="col-sm-2 control-label">后期备忘</label>
+                        <div class="col-sm-10">
+                            <textarea id="remark" name="remark" class="form-right" maxlength="200" style="width:680px" rows="4"></textarea>
+                            </div>
+                        </div>
+              </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="FollowManageInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="FollowManageInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/followManage/followManage_info.js"></script>
+<!-- <script type="text/javascript" src="${ctxPath}/static/js/plugins/wangEditor/wangEditor.js"></script> -->
+@}

@@ -1,0 +1,67 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+			<input type="hidden" id="orderId" value=${order.orderId}>
+			<div class="row">
+				<div class="col-sm-6">
+					<ul class="list-group">
+						<li class="list-group-item"><span class="text-success">小区：</span>${order.nName}</li>
+						<li class="list-group-item"><span class="text-success">房号：</span>${order.rNum}</li>
+						<li class="list-group-item"><span class="text-success">订单编号：</span>${order.orderCode}</li>
+						<li class="list-group-item"><span class="text-success">下单时间：</span>${order.orderTime,dateFormat="yyyy-MM-dd HH:mm:ss"}</li>
+					</ul>
+				</div>
+				<div class="col-sm-6">
+					<ul class="list-group">
+						<li class="list-group-item"><span class="text-success">预订人：</span>${order.appUserRealname}</li>
+						<li class="list-group-item"><span class="text-success">手机号：</span>${order.userPhoneNo}</li>
+						<li class="list-group-item"><span class="text-success">收费方式：</span>
+								${order.servicePaymentTypeName}
+								@if(order.servicePaymentType==2){
+									&nbsp;&nbsp;&nbsp;${order.deposit}
+								@}
+						</li>
+						<li class="list-group-item"><span class="text-success">支付状态：</span>${order.payStatusName}</li>											
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<ul class="list-group">
+						<li class="list-group-item"><span class="text-success">服务名：</span>${order.serviceName}</li>
+						<li class="list-group-item"><span class="text-success">服务类别：</span>${order.serviceSortName}</li>
+						<li class="list-group-item"><span class="text-success">服务方式：</span>${order.serviceTypeName}</li>
+						<li class="list-group-item"><span class="text-success">备注：</span>${order.serviceDetail}</li>
+						<li class="list-group-item"><span class="text-success">
+						<#button btnCss="warning" name="服务详情" id="cancel" icon="fa-eraser"
+							clickFun="SpecialServiceOrderDetail.openService(${order.serviceId})"/>
+						</li>
+					</ul>
+				</div>
+				<div class="col-sm-6" >
+					<img alt="封面" src="${order.cover}" style="width:200px;height:200px"/>
+				</div>
+			</div>
+			<div class="row btn-group-m-t">
+               	@if(order.sOrderStatus==1){
+                	<#button btnCss="info" name="接单" id="ensure" icon="fa-check" clickFun="SpecialServiceOrderDetail.openRecieve()"/>            	              
+               	@}else if(order.sOrderStatus==2){
+                	<#button btnCss="info" name="派单" id="ensure" icon="fa-check" clickFun="SpecialServiceOrderDetail.openSendOrder()"/>            	              
+               	@}else if(order.sOrderStatus==3&&order.serviceType==1){
+               	<!--只有当支付类型为一口价，并且处于已派单/待服务状态的订单需要后台手动点击完成服务 -->
+               		<#button btnCss="info" name="完成订单" id="ensure" icon="fa-check" clickFun="SpecialServiceOrderDetail.openCompleteOrder()"/> 
+               	@}
+               	
+               	@if(order.sOrderStatus==1||order.sOrderStatus==2||order.sOrderStatus==3||order.sOrderStatus==4){
+             		<#button btnCss="info" name="取消订单" id="ensure" icon="fa-check" clickFun="SpecialServiceOrderDetail.openCanelOrder()"/> 
+               	@}     
+               <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="SpecialServiceOrderDetail.close()" />
+			</div>
+		</div>
+
+	</div>
+</div>
+<script
+	src="${ctxPath}/static/bmw/property/specialServiceOrder/specialServiceOrder_detail.js"></script>
+@}

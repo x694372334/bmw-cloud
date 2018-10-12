@@ -1,0 +1,48 @@
+ @layout("/common/_container.html"){
+<div class="container-fluid" id="main1"
+	style="width: 650px; height: 140px; padding: 0 !important;"></div>
+
+<script src="${ctxPath}/static/js/plugins/echarts/echarts-all.js"></script>
+<script type="text/javascript">
+	var myChart1 = echarts.init(document.getElementById('main1'));
+	var option1 = {
+		title : {
+			text : '历年收入对比（单位：万元）',
+			x : 'left'
+		},
+		tooltip : {
+			trigger : 'axis',
+			axisPointer : {
+				type : 'shadow'
+			}
+		},
+		legend : {
+			selectedMode:false,
+			data : [ '预计销售', '实际销售' ]
+		},
+		grid : {
+			show : false,
+			height : '43%',
+			width : '75%',
+			left : '5%',
+		},
+		yAxis : {
+			type : 'value'
+		},
+		xAxis : {
+			type : 'category',
+			data : [ '2013', '2014', '2015', '2016', '2017', '2018' ]
+		},
+		series : [ {
+			name : '预计销售',
+			type : 'bar',
+			data : [ 180, 230, 290, 100, 130, 230 ]
+		}, {
+			name : '实际销售',
+			type : 'bar',
+			data : [ 190, 205, 310, 120, 130, 280 ]
+		} ]
+	};
+	myChart1.setOption(option1);
+</script>
+@}

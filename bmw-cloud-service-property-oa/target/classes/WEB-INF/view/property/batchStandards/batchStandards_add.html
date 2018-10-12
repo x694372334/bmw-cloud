@@ -1,0 +1,84 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="batchStandardsForm">
+
+            <input type="hidden" id="id" value="">
+             <input type="hidden" id="pId" value="${pId!}">
+              <input type="hidden" id="rId" value="${rId!}">
+              <input type="hidden" id="relevanceId" value="${relevanceId!}">
+            
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            
+                             <#select id="costId" name="收费项目&nbsp;&nbsp;&nbsp;" underline="true">
+							 </#select>
+                           
+							 
+							
+							 
+							 <span id="isShow1">
+							 <#input id="chargeableStartDate111" name="" underline="true" type="date" style="display:none"/>
+							  <label class="col-sm-3 control-label" style="margin-left:-10px;margin-right:10px;">无结束时间</label>
+							 <input type="checkbox" id="isChecked"/>
+							</span>
+							 
+							   
+                </div>
+
+                <div class="col-sm-6">
+                	<!--  房屋tree  开始-->
+                     <!-- <#input id="treeid" name="关联范围" underline="true" readonly="readonly" hidden="scopeId"
+								clickFun="BatchStandardsInfoDlg.showDeptSelectTree(); return false;"
+								style="background-color: #ffffff !important;"/> -->
+                    <!--  房屋tree 结束-->
+                    			
+                    			 <#select id="standardId" name="收费标准名称" underline="true">
+							 </#select>
+							 
+                  				
+								<span id="isShow2">
+								<#input id="chargeableStartDate" name="计费开始时间" underline="true" type="date"/>
+                          
+ 								<#input id="chargeableEndDate" name="计费结束时间" underline="true" type="date"/>
+ 								</span>
+            	</div>
+            	
+            
+            <div class="row">
+            
+            	<div class="form-group">
+                        <label class="col-sm-2 control-label">备注</label>
+                        <div class="col-sm-10" style="width:auto;">
+                            <div id="remark" class="editorHeight" style="width:auto;margin-left:-1px;">
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+			<div id="treeContent" class="menuContent"
+				style="display: none; position: absolute; z-index: 200;">
+				<ul id="scopeTree" class="ztree tree-box" style="width: 249px !important;"></ul>
+			</div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BatchStandardsInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BatchStandardsInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/batchStandards/batchStandards_info.js"></script>
+<script type="text/javascript" src="${ctxPath}/static/js/plugins/wangEditor/wangEditor.js"></script>
+
+<script type="text/javascript" src="${ctxPath}/static/js/bootstrap-switch/bootstrap-switch.js"></script>
+<link href="${ctxPath}/static/css/bootstrap-switch/bootstrap3/bootstrap-switch.css" rel="stylesheet">
+
+
+
+
+
+
+@}

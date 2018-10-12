@@ -1,0 +1,39 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="positionfrom">
+
+            <input type="hidden" id="id" value="${item.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+ 						  	<input id="code"  value="${item.code}" hidden="true"/>
+                            <#input id="pcodeName" name="父节点" value="" underline="true" required="true"
+                            hidden="parentCode" readonly="readonly" hiddenValue="${item.parentCode}" value="${pname}"
+							clickFun="positionInfoDlg.showpositionSelectTree(); return false;"
+							style="background-color: #ffffff !important;"
+							selectFlag="true" selectId="pcodeTreeDiv" selectTreeId="pcodeTree" selectStyle="width:244px !important;"/>
+                            <#input id="sort" name="排序" value="${item.sort}" />
+                </div>
+
+                <div class="col-sm-6">
+                <#input id="name" name="名称" value="${item.name}" underline="true" required="true"/>
+                            <input id="isLeaf" name="是否叶子结点" value="${item.isLeaf}" hidden="true" underline="true">
+                            <input id="childrenCount" hidden="true" name="结点个数" value="${item.childrenCount}" underline="true"/>
+                            <input id="level" name="层级" value="${item.level}" hidden="true">
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="positionInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="positionInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/position/position_info.js"></script>
+@}
+                

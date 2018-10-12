@@ -1,0 +1,30 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="RoomCheckRecordForm">
+          	<input type="hidden" id="id" value="${item.id}">
+            <div class="row">
+                <div class="col-sm-12 b-r">
+                <ul class="list-group">
+						<li class="list-group-item"><span class="text-success">业主姓名：</span>${item.ownerName}</li>
+						<li class="list-group-item"><span class="text-success">房屋号：</span>${item.roomNum}</li>
+						<li class="list-group-item"><span class="text-success">联系方式：</span>${item.contact}</li>
+						<li class="list-group-item"><span class="text-success">验房时间"：</span>${item.checkTimeString}</li>
+						<li class="list-group-item"><span class="text-success">负责人：</span>${item.principalUserName}</li>
+						<li class="list-group-item"><span class="text-success">状态：</span>${item.statusName}</li>
+						<li class="list-group-item"><span class="text-success">备注：</span>${item.remark}</li>
+					</ul>
+                            
+                </div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="取消"  icon="fa-eraser" clickFun="RoomCheckRecordInfoDlg2.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/roomCheckRecord/roomCheckRecord_info2.js"></script>
+@}

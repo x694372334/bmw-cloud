@@ -1,0 +1,41 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal"  id="ScheduleDetailInfoForm">
+
+            <input type="hidden" id="id" value="${item.id}">
+ 			<input type="hidden" id="approach" value="${approach}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="scheduleStartTime" name="开始时间"  type="time" value="${item.scheduleStartTime}" underline="true"/>
+                            <#input id="scheduleEndTime" name="结束时间" type="time" value="${item.scheduleEndTime}" underline="true"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#select id="isAppointment" name="是否可以预约" underline="true">
+								<option @if(1==item.isAppointment){
+									selected
+			                        @}
+									value="1">是</option>
+								<option @if(0==item.isAppointment){
+									selected
+			                        @}
+									value="0">否</option>
+							</#select>
+                            <#input id="appointmentNum" type="number"  name="预约人数" value="${item.appointmentNum}" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="ScheduleDetailInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ScheduleDetailInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/medical/scheduleDetail/scheduleDetail_info.js"></script>
+@}

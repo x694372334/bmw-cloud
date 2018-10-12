@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="bmw-cloud-commons" />
+        <module name="bmw-cloud-eureka" />
+        <module name="bmw-cloud-personal" />
+        <module name="bmw-cloud-personal-web" />
+        <module name="bmw-cloud-service-bmwPersonal" />
+        <module name="bmw-cloud-service-property" />
+        <module name="bmw-cloud-service-property-oa" />
+        <module name="bmw-cloud-zuul" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="bmw-cloud" target="1.8" />
+      <module name="bmw-cloud-commons" target="1.8" />
+      <module name="bmw-cloud-eureka" target="1.8" />
+      <module name="bmw-cloud-personal" target="1.8" />
+      <module name="bmw-cloud-personal-web" target="1.8" />
+      <module name="bmw-cloud-service-bmwPersonal" target="1.5" />
+      <module name="bmw-cloud-service-property" target="1.8" />
+      <module name="bmw-cloud-service-property-oa" target="1.8" />
+      <module name="bmw-cloud-zuul" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

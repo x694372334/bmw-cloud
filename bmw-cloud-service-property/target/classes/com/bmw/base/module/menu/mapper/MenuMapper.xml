@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bmw.base.module.menu.mapper.MenuMapper" >
+
+    <resultMap id="BaseResultMap" type="com.bmw.base.module.menu.domain.Menu" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="code" property="code" jdbcType="VARCHAR" />
+        <result column="pcode" property="pcode" jdbcType="VARCHAR" />
+        <result column="pcodes" property="pcodes" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="icon" property="icon" jdbcType="VARCHAR" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+        <result column="num" property="num" jdbcType="INTEGER" />
+        <result column="levels" property="levels" jdbcType="INTEGER" />
+        <result column="ismenu" property="ismenu" jdbcType="INTEGER" />
+        <result column="tips" property="tips" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="isopen" property="isopen" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="column" >
+        id, code, pcode, pcodes, name, icon, url, num, levels, ismenu, tips, status, isopen
+    </sql>
+
+    <sql id="column2" >
+        sys_menu.id, sys_menu.code, sys_menu.pcode, sys_menu.pcodes, sys_menu.name, sys_menu.icon, 
+        sys_menu.url, sys_menu.num, sys_menu.levels, sys_menu.ismenu, sys_menu.tips, sys_menu.status, 
+        sys_menu.isopen
+    </sql>
+
+    <sql id="column3" >
+        sys_menu.id as id, sys_menu.code as code, sys_menu.pcode as pcode, sys_menu.pcodes as pcodes, 
+        sys_menu.name as name, sys_menu.icon as icon, sys_menu.url as url, sys_menu.num as num, 
+        sys_menu.levels as levels, sys_menu.ismenu as ismenu, sys_menu.tips as tips, sys_menu.status as status, 
+        sys_menu.isopen as isopen
+    </sql>
+
+    <sql id="equal" >
+        <if test="id != null" >
+             AND id = #{id}
+        </if>
+        <if test="code != null and code != '' " >
+             AND code = #{code}
+        </if>
+        <if test="pcode != null and pcode != '' " >
+             AND pcode = #{pcode}
+        </if>
+        <if test="pcodes != null and pcodes != '' " >
+             AND pcodes = #{pcodes}
+        </if>
+        <if test="name != null and name != '' " >
+             AND name = #{name}
+        </if>
+        <if test="icon != null and icon != '' " >
+             AND icon = #{icon}
+        </if>
+        <if test="url != null and url != '' " >
+             AND url = #{url}
+        </if>
+        <if test="num != null" >
+             AND num = #{num}
+        </if>
+        <if test="levels != null" >
+             AND levels = #{levels}
+        </if>
+        <if test="ismenu != null" >
+             AND ismenu = #{ismenu}
+        </if>
+        <if test="tips != null and tips != '' " >
+             AND tips = #{tips}
+        </if>
+        <if test="status != null" >
+             AND status = #{status}
+        </if>
+        <if test="isopen != null" >
+             AND isopen = #{isopen}
+        </if>
+    </sql>
+
+    <sql id="like" >
+        <if test="id != null" >
+             AND id like CONCAT('%',#{id},'%')
+        </if>
+        <if test="code != null and code != '' " >
+             AND code like CONCAT('%',#{code},'%')
+        </if>
+        <if test="pcode != null and pcode != '' " >
+             AND pcode like CONCAT('%',#{pcode},'%')
+        </if>
+        <if test="pcodes != null and pcodes != '' " >
+             AND pcodes like CONCAT('%',#{pcodes},'%')
+        </if>
+        <if test="name != null and name != '' " >
+             AND name like CONCAT('%',#{name},'%')
+        </if>
+        <if test="icon != null and icon != '' " >
+             AND icon like CONCAT('%',#{icon},'%')
+        </if>
+        <if test="url != null and url != '' " >
+             AND url like CONCAT('%',#{url},'%')
+        </if>
+        <if test="num != null" >
+             AND num like CONCAT('%',#{num},'%')
+        </if>
+        <if test="levels != null" >
+             AND levels like CONCAT('%',#{levels},'%')
+        </if>
+        <if test="ismenu != null" >
+             AND ismenu like CONCAT('%',#{ismenu},'%')
+        </if>
+        <if test="tips != null and tips != '' " >
+             AND tips like CONCAT('%',#{tips},'%')
+        </if>
+        <if test="status != null" >
+             AND status = '1'
+        </if>
+        <if test="isopen != null" >
+             AND isopen like CONCAT('%',#{isopen},'%')
+        </if>
+    </sql>
+
+    <insert id="add" parameterType="com.bmw.base.module.menu.domain.Menu" >
+        insert into sys_menu
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="code != null and code != '' " >
+                code,
+            </if>
+            <if test="pcode != null and pcode != '' " >
+                pcode,
+            </if>
+            <if test="pcodes != null and pcodes != '' " >
+                pcodes,
+            </if>
+            <if test="name != null and name != '' " >
+                name,
+            </if>
+            <if test="icon != null and icon != '' " >
+                icon,
+            </if>
+            <if test="url != null and url != '' " >
+                url,
+            </if>
+            <if test="num != null" >
+                num,
+            </if>
+            <if test="levels != null" >
+                levels,
+            </if>
+            <if test="ismenu != null" >
+                ismenu,
+            </if>
+            <if test="tips != null and tips != '' " >
+                tips,
+            </if>
+            <if test="status != null" >
+                status,
+            </if>
+            <if test="isopen != null" >
+                isopen,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="code != null and code != '' " >
+                #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="pcode != null and pcode != '' " >
+                #{pcode,jdbcType=VARCHAR},
+            </if>
+            <if test="pcodes != null and pcodes != '' " >
+                #{pcodes,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null and name != '' " >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null and icon != '' " >
+                #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null and url != '' " >
+                #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="num != null" >
+                #{num,jdbcType=INTEGER},
+            </if>
+            <if test="levels != null" >
+                #{levels,jdbcType=INTEGER},
+            </if>
+            <if test="ismenu != null" >
+                #{ismenu,jdbcType=INTEGER},
+            </if>
+            <if test="tips != null and tips != '' " >
+                #{tips,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=INTEGER},
+            </if>
+            <if test="isopen != null" >
+                #{isopen,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Long" >
+        delete from sys_menu
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+
+    <update id="update" parameterType="com.bmw.base.module.menu.domain.Menu" >
+        update sys_menu
+        <set >
+            <if test="code != null and code != '' " >
+                code = #{code,jdbcType=VARCHAR},
+            </if>
+            <if test="pcode != null and pcode != '' " >
+                pcode = #{pcode,jdbcType=VARCHAR},
+            </if>
+            <if test="pcodes != null and pcodes != '' " >
+                pcodes = #{pcodes,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null and name != '' " >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="icon != null and icon != '' " >
+                icon = #{icon,jdbcType=VARCHAR},
+            </if>
+            <if test="url != null and url != '' " >
+                url = #{url,jdbcType=VARCHAR},
+            </if>
+            <if test="num != null" >
+                num = #{num,jdbcType=INTEGER},
+            </if>
+            <if test="levels != null" >
+                levels = #{levels,jdbcType=INTEGER},
+            </if>
+            <if test="ismenu != null" >
+                ismenu = #{ismenu,jdbcType=INTEGER},
+            </if>
+            <if test="tips != null and tips != '' " >
+                tips = #{tips,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null" >
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="isopen != null" >
+                isopen = #{isopen,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="column" />
+        from sys_menu
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    
+    <select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        select 
+        <include refid="column" />
+        from sys_menu
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    
+
+    <select id="findLike" resultType="Menu" parameterType="Menu" >
+        select 
+        <include refid="column3" />
+        from sys_menu
+        <where >
+            <include refid="like" />
+        </where>
+    </select>
+
+    <select id="findList" resultType="Menu" parameterType="Menu" >
+        select 
+        <include refid="column3" />
+        from sys_menu
+        <where >
+            <include refid="equal" />
+        </where>
+    </select>
+    
+      <sql id="menuSelectLB" >
+       <if test="id != null" >
+             AND id = #{id}
+        </if>
+        <if test="name != null and name != '' " >
+             AND name like CONCAT('%',#{name},'%')
+        </if>
+        <if test="levels != null" >
+             AND levels = #{levels}
+        </if>
+    </sql>
+    
+    
+     <select id="selectMenu" resultType="Menu" parameterType="Menu">
+        select
+        <include refid="column" />
+        from sys_menu
+        <where >
+            <include refid="menuSelectLB" />
+        </where>
+    </select>
+    
+    <sql id="detailMenuLB" >
+       <if test="id != null" >
+             AND id = #{id}
+        </if>
+    </sql>
+    
+    <select id="detailMenuById" resultType="Menu" parameterType="Menu">
+        select
+        <include refid="column" />
+        from sys_menu
+        <where >
+            <include refid="detailMenuLB" />
+        </where>
+    </select>
+    
+     <delete id="deleteRelationByMenu">
+        delete from sys_relation where menuid = #{menuId}
+    </delete>
+    
+    <select id="getMenuIdsByRoleId" resultType="long">
+        select menuid from
+        sys_relation where roleid = #{roleId}
+    </select>
+    
+     <select id="menuTreeList" resultType="com.bmw.common.utils.oa.ZTreeNode">
+        SELECT
+        m1.id AS id,
+        (
+        CASE
+        WHEN (m2.id = 0 OR m2.id IS NULL) THEN
+        0
+        ELSE
+        m2.id
+        END
+        ) AS pId,
+        m1. NAME
+        AS NAME,
+        (
+        CASE
+        WHEN (m2.id = 0 OR m2.id IS NULL) THEN
+        'true'
+        ELSE
+        'false'
+        END
+        ) as isOpen
+        FROM
+        sys_menu m1
+        LEFT join sys_menu m2 ON m1.pcode = m2. CODE
+        ORDER BY
+        m1.id ASC
+    </select>
+    
+    <select id="menuTreeListByMenuIds" resultType="com.bmw.common.utils.oa.ZTreeNode">
+        SELECT
+        m1.id AS id,
+        (
+        CASE
+        WHEN (m2.id = 0 OR m2.id IS NULL) THEN
+        0
+        ELSE
+        m2.id
+        END
+        ) AS pId,
+        m1. NAME AS NAME,
+        (
+        CASE
+        WHEN (m2.id = 0 OR m2.id IS
+        NULL) THEN
+        'true'
+        ELSE
+        'false'
+        END
+        ) as isOpen,
+        (
+        CASE
+        WHEN (m3.ID = 0 OR m3.ID
+        IS NULL) THEN
+        'false'
+        ELSE
+        'true'
+        END
+        ) "checked"
+        FROM
+        sys_menu m1
+        LEFT JOIN
+        sys_menu m2
+        ON m1.pcode = m2. CODE
+        left join (
+        SELECT
+        ID
+        FROM
+        sys_menu
+        WHERE
+        ID IN
+        <foreach collection="list" index="index" item="i" open="("
+                 separator="," close=")">
+            #{i}
+        </foreach>
+        ) m3 on m1.id = m3.id
+        ORDER BY
+        m1.id ASC
+    </select>
+    
+     <select id="getResUrlsByRoleId" resultType="string">
+        select url from
+        sys_relation rel
+        inner join sys_menu m on rel.menuid = m.id
+        where rel.roleid = #{roleId}
+    </select>
+    
+    <select id="getMenusByRoleIds" resultType="com.bmw.common.utils.oa.MenuNode">
+        SELECT
+        m1.id AS id,
+        m1.icon AS icon,
+        (
+        CASE
+        WHEN (m2.id = 0 OR m2.id IS NULL) THEN
+        0
+        ELSE
+        m2.id
+        END
+        ) AS parentId,
+        (CASE
+        WHEN (m2.id = 0 OR m2.id IS NULL) THEN
+        0
+        ELSE
+        m2.id
+        END
+        ) AS pId,
+       (
+        CASE
+        WHEN (m2.id = 0 OR m2.id IS
+        NULL) THEN
+        'true'
+        ELSE
+        'false'
+        END
+        ) as isOpen,
+        m1.NAME as name,
+        m1.url as url,
+        m1.levels as levels,
+        m1.ismenu as ismenu,
+        m1.num as num,
+        m1.code as code,
+        m1.pcodes as pcodes
+        FROM
+        sys_menu m1
+        LEFT join sys_menu m2 ON m1.pcode = m2. CODE
+        INNER JOIN (
+        SELECT
+        ID
+        FROM
+        sys_menu
+        WHERE
+        ID IN (
+        SELECT
+        menuid
+        FROM
+        sys_relation rela
+        WHERE
+        rela.roleid IN
+        <foreach collection="list" index="index" item="i" open="(" separator="," close=")">
+            #{i}
+        </foreach>
+        )
+        ) m3 ON m1.id = m3.id
+        where m1.ismenu = 1
+        order by levels,num asc
+    </select>
+    
+    
+        <select id="menuTreeByRoleIds" resultType="com.bmw.common.utils.oa.MenuNode">
+        SELECT
+        m1.id AS id,
+        m1.icon AS icon,
+        (
+        CASE
+        WHEN (m2.id = 0 OR m2.id IS NULL) THEN
+        0
+        ELSE
+        m2.id
+        END
+        ) AS parentId,
+        (CASE
+        WHEN (m2.id = 0 OR m2.id IS NULL) THEN
+        0
+        ELSE
+        m2.id
+        END
+        ) AS pId,
+       (
+        CASE
+        WHEN (m2.id = 0 OR m2.id IS
+        NULL) THEN
+        'true'
+        ELSE
+        'false'
+        END
+        ) as isOpen,
+        m1.NAME as name,
+        m1.url as url,
+        m1.levels as levels,
+        m1.ismenu as ismenu,
+        m1.num as num
+        FROM
+        sys_menu m1
+        LEFT join sys_menu m2 ON m1.pcode = m2. CODE
+        INNER JOIN (
+        SELECT
+        ID
+        FROM
+        sys_menu
+        WHERE
+        ID IN (
+        SELECT
+        menuid
+        FROM
+        sys_relation rela
+        WHERE
+        rela.roleid IN
+        <foreach collection="list" index="index" item="i" open="(" separator="," close=")">
+            #{i}
+        </foreach>
+        )
+        ) m3 ON m1.id = m3.id
+        order by levels,num asc
+    </select>
+    
+    
+</mapper>

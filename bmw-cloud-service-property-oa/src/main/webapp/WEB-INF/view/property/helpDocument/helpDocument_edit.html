@@ -1,0 +1,76 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="helpDocumentForm">
+
+            <input type="hidden" id="id" value="${item.id}">
+            <input type="hidden" id="contentVal" value='${item.content}'>
+            
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                		   <input id="fileId" type="hidden" value='${item.fileId}'/>
+                           <!--  <#input id="id" name="主键id" value="${item.id}" underline="true"/> 
+                            <#input id="helpDocumentType" name="分类名称" value="${item.helpDocumentType}" underline="true"/>
+                            <#input id="helpDocumentTypeId" name="分类ID" value="${item.helpDocumentTypeId}" underline="true"/> -->
+                            <#input id="title" name="标题" required="true" value="${item.title}" underline="true"/>
+                             <#input id="keyword" name="关键字" underline="true" value="${item.keyword}"/>
+                           <!--  <#input id="createId" name="创建人ID" value="${item.createId}" underline="true"/>
+                            <#input id="createMan" name="创建人" value="${item.createMan}" underline="true"/>
+                            <#input id="createTime" name="创建时间" value="${item.createTime}" /> -->
+                </div>
+
+                <div class="col-sm-6">
+                <#input id="helpDocumentType" name="分类" required="true" underline="true"
+                            hidden="helpDocumentTypeId" hiddenValue="${item.helpDocumentTypeId}" readonly="readonly" value="${item.helpDocumentType}"
+							clickFun="HelpDocumentInfoDlg.showhelpDocumentTypeSelectTree(); return false;"
+							style="background-color: #ffffff !important;"
+							selectFlag="true" selectId="pcodeTreeDiv" selectTreeId="pcodeTree" selectStyle="width:244px !important;"/>
+                          <!--   <#input id="editManId" name="修改人id" value="${item.editManId}" underline="true"/>
+                            <#input id="editMan" name="修改人" value="${item.editMan}" underline="true"/>
+                            <#input id="editTime" name="修改时间" value="${item.editTime}" underline="true"/>
+                            <#input id="fileName" name="附件文件名" value="${item.fileName}" underline="true"/>
+                            <#input id="filePath" name="附件文件路径" value="${item.filePath}" underline="true"/>
+                            <#input id="fileFormat" name="附件文件格式" value="${item.fileFormat}" underline="true"/> -->
+                </div>
+            </div>
+            <div class="form-group">
+				
+				<div class="row">
+					<label class="col-sm-1 control-label" style="float:left;">内容</label>
+					<div id="editor" class="col-sm-11 editorHeight" style="width:auto;margin-left:0px !important;"></div>
+				</div>
+			</div>
+			
+			
+			<div class="ibox float-e-margins" style="width:605px;margin-left:90px;">
+				<form id="form" action="" method="post"
+					enctype="multipart/form-data">
+					<div class="row form-group">
+						<div class="panel panel-primary">
+							<div class="panel-heading" align="center">
+								<label style="text-align: center; font-size: 18px;">上传附件</label>
+							</div>
+							<div class="panel-body">
+								<div class="col-sm-12">
+									<input id="input-id" name="file" multiple type="file"
+										data-show-preview="false" data-show-caption="true">
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			
+			<div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="HelpDocumentInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="HelpDocumentInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/js/plugins/wangEditor/wangEditor.js"></script>
+<script src="${ctxPath}/static/bmw/property/helpDocument/helpDocument_info.js"></script>
+@}

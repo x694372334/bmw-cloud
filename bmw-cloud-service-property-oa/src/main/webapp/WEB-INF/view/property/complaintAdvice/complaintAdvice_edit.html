@@ -1,0 +1,101 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${item.id}">
+			<input type="hidden" id="status" value="1">
+			
+			<div class="row">
+			   <div class="ibox">
+                   <div class="ibox-content">  
+                   <div class="row">
+							<div class="col-sm-6">
+								<h4><span class="text-success">业主姓名：</span>${item.ownerName}</h4>
+							</div>
+							<div class="col-sm-6">
+								<h4><span class="text-success">房屋号：</span>${item.neighborhoodsNo}</h4>
+							</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+                    <div class="row">
+							<div class="col-sm-6">
+								<h4><span class="text-success">联系电话：</span>${item.phone}</h4>
+							</div>
+							<div class="col-sm-6">
+								<h4><span class="text-success">回复时间：</span>${item.replyTime}</h4>
+							</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+                   <div class="row">
+	                        <div class="col-sm-12">
+	                        	<h4><span class="text-success">投诉内容：</span></h4>
+	                        	<div class="panel panel-default">
+									<div class="panel-body">
+										 ${item.complaintContent}
+									</div>
+								</div>
+							</div>
+					</div>
+					<div class="hr-line-dashed"></div>
+                   <div class="row">
+	                        <div class="col-sm-12">
+	                        	<h4><span class="text-success">回复内容：</span></h4>
+	                        	<div class="panel panel-default">
+									<div class="panel-body">
+										 <textarea id="replyContent" class="form-right" style="width:680px" rows="4">${item.replyContent}</textarea>
+									</div>
+								</div>
+							</div>
+                   </div>
+                   <div class="hr-line-dashed"></div>
+                   </div>
+               </div>
+           </div>  
+           
+          <!--   <div class="row">
+                <div class="col-sm-10 ">
+                            <#input id="id" name="主键" value="${item.id}" underline="true"/>
+                           
+                           	&nbsp;&nbsp;&nbsp;&nbsp;<strong>业主姓名 </strong>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;  <input style="border: 0px;outline:none;cursor: pointer;" value="${item.ownerName}" readonly="true"/>
+                            <br/>
+                          	<br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>房屋号</strong>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;  <input style="border: 0px;outline:none;cursor: pointer;" value="${item.neighborhoodsNo}" readonly="true"/>
+                            <br/>
+                            <br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>联系电话</strong>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;  <input style="border: 0px;outline:none;cursor: pointer;" value="${item.phone}" readonly="true"/>
+                            <br/>
+                            <br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>回复时间</strong>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;  
+                            <input name="replyTime" style="border: 0px;outline:none;cursor: pointer;"   value="${item.replyTime}" readonly="true"/>
+                            <br/>
+                            <br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>状态 </strong>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;  <input name="status" style="border: 0px;outline:none;cursor: pointer;" value="${item.status}" readonly="true"/>
+                            <br/>
+                            <br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>投诉内容</strong> :
+                          	 <br/>
+                          	 <br/>
+                          	&nbsp;&nbsp;&nbsp;&nbsp;<textarea id="complaintContent" class="form-right" style="width:400px" rows="4">${item.complaintContent}</textarea>
+                           <br/>
+                           <br/>
+                          	&nbsp;&nbsp;&nbsp;&nbsp;<strong>回复内容</strong> :
+                          	 <br/>
+                          	 <br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<textarea id="replyContent" class="form-right" style="width:400px" rows="4">${item.replyContent}</textarea> 
+                </div>
+
+            </div> -->
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="确认提交" id="ensure" icon="fa-check" clickFun="ComplaintAdviceInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ComplaintAdviceInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/complaintAdvice/complaintAdvice_info.js"></script>
+@}

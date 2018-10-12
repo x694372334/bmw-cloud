@@ -1,0 +1,33 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="aContractorInfoForm">
+
+            <input type="hidden" id="cId" value="">
+             <input type="hidden" id="nId" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+ 				 <#input id="cName" name="赞助商名称" underline="true" required="true"/>
+                 <#input id="cPersion" name="负责人"  underline="true" required="true" />
+                 <#input id="cBusiness" name="分包业务"  underline="true" required="true" />
+                </div>
+                <div class="col-sm-6 b-r">
+                  <#select id="cStatus" name="分包状态"  underline="true" required="true" />
+                 <#select id="test" name="关联小区" underline="true" required="true" />
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="AContractorInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="AContractorInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/aContractor/aContractor_info.js"></script>
+@}
+                

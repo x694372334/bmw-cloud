@@ -1,0 +1,86 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="inhabitantInfoForm">
+
+            <input type="hidden" id="iId" value="">
+            <input type="hidden" id="rId" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+	                 <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-right:10px;margin-left:-5px;">住户姓名<span style="color:red;">*</span></label>
+	                 <#input style="width:200px;float:left;margin-top:-25px;margin-left:110px;" class="form-control" id="iName" name="" underline="true"/>
+	               
+	                 
+	                 <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-left:-5px;margin-top:15px;">住户性别<span style="color:red;">*</span></label>
+	                <div style="width:380px;margin-left:40px;">
+	                <#select class="form-control" id="iGender" name=""  underline="true" />
+	          		</div>
+               		<div style="height:10px;"></div>
+	                 <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-right:10px;margin-left:-5px;">业主身份证<span style="color:red;">*</span></label>
+	                 <#input style="width:200px;float:left;margin-top:-25px;margin-left:110px;" class="form-control" id="iIdcardno" name=""  underline="true" />
+	                
+	                  
+	                 <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-left:-5px;margin-top:15px;">住户身份<span style="color:red;">*</span></label> 
+	                 <div style="width:380px;margin-left:40px;">
+	                 	<#select style="width:200px;" class="form-control" id="iIdentity" name=""  underline="true" />
+	                </div>
+	                 
+	                 
+	                 <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-left:-5px;margin-top:15px;">入住状态<span style="color:red;">*</span></label> 
+	                <div style="width:380px;margin-left:40px;">
+	                 	<#select style="width:200px;" class="form-control" id="oStatus" name="" underline="true"  />
+	                </div>
+	                 <div style="height:10px;"></div>
+	                 
+	                 <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-right:10px;margin-left:-5px;">住户手机号码<span style="color:red;">*</span></label> 
+	                 <#input style="width:200px;float:left;margin-top:-25px;margin-left:110px;" class="form-control" id="iPhoneno" name=""  underline="false" />
+	                 
+                </div>
+                 <div class="col-sm-6 b-r">
+                 	 <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-right:10px;margin-left:-5px;">爱好</label>
+	                 <#input style="width:200px;float:left;margin-top:-25px;margin-left:110px;" class="form-control" id="iInterest" name=""  underline="true" />
+	                 
+	                 <div style="height:10px;"></div>
+	                 <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-right:10px;margin-left:-5px;">职业</label>
+	                 <#input style="width:200px;float:left;margin-top:-25px;margin-left:110px;" class="form-control" id="iProfession" name=""  underline="true" />
+	                 
+	                 <div style="height:10px;"></div>
+	                 <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-right:10px;margin-left:-5px;">公司</label>
+	                 <#input style="width:200px;float:left;margin-top:-25px;margin-left:110px;" class="form-control" id="iCompany" name=""  underline="true" />
+	                
+	                 <div style="height:10px;"></div>
+	                 <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-right:10px;margin-left:-5px;">宠物</label>
+	                 <#input style="width:200px;float:left;margin-top:-25px;margin-left:110px;" class="form-control" id="iPet" name=""  underline="true" />
+	                
+	                 <div style="height:10px;"></div>
+	                 <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-left:-5px;margin-top:15px;">是否是房主<span style="color:red;">*</span></label>
+	                 <div style="width:380px;margin-left:40px;">
+	                 	<#select style="width:200px;" class="form-control" id="isHOwner" name=""  underline="true" />
+	                </div>
+	                
+	                  <div style="height:10px;"></div>
+	               	
+	                 <#input style="width:200px;float:left;margin-top:-25px;margin-left:110px;" id="citySel" name="房屋号" required="true"  readonly="readonly" hidden="roomId"
+						clickFun="InhabitantInfoInfoDlg.showRoomSelectTree(); return false;"
+						style="background-color: #ffffff !important;width:206px !important;margin-left:20px;"></#input> 
+					    
+                </div>
+            </div>
+			 <!-- 这是房间选择的下拉框 -->
+				<div id="roomContent" class="roomContent" style="display: none; position: absolute; z-index: 200;">
+					<ul id="treeDemo" class="ztree tree-box" style="width: 249px !important;"></ul>
+				</div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="InhabitantInfoInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="InhabitantInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/inhabitantInfo/inhabitantInfo_info.js"></script>
+@}
+                

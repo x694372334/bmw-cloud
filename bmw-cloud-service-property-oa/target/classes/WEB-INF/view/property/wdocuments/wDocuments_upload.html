@@ -1,0 +1,38 @@
+@layout("/common/_container.html"){
+
+	<div class="ibox-content">
+		<div class="form-horizontal">
+			<#input id="title" name="标题" underline="true" />
+			<#select id="sharingLevel" name="共享等级" underline="true">
+			<option value="1">个人</option>
+			<option value="2">物业</option>
+			<option value="3">公司</option>
+			</#select>
+			<#select id="dType" name="文档类型" underline="true">
+			<option value="1">国家法律</option>
+			<option value="2">地方法规</option>
+			<option value="3" selected>内部文档</option>
+			</#select>
+		</div>
+	</div>
+	<div class="ibox float-e-margins">
+	<form id="form" action="" method="post" enctype="multipart/form-data">
+		<div class="row form-group">
+			<div class="panel panel-primary">
+				<div class="panel-heading" align="center">
+					<label style="text-align: center; font-size: 18px;">文 档 上 传</label>
+				</div>
+				<div class="panel-body">
+					<div class="col-sm-12">
+						<input id="input-id" name="file" multiple type="file"
+							data-show-preview="false" data-show-caption="true">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<#button id="sf" name="确认上传" icon="fa-plus"
+		clickFun="WDocumentsUpload.upload()" />
+</div>
+<script src="${ctxPath}/static/bmw/property/wdocuments/wDocuments_upload.js"></script>
+@}
