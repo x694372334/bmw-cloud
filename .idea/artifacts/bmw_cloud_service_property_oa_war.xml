@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="bmw-cloud-service-property-oa:war">
-    <output-path>$PROJECT_DIR$/bmw-cloud-service-property-oa/target</output-path>
-    <root id="archive" name="bmw-cloud-service-property-oa-1.0.0.war">
-      <element id="artifact" artifact-name="bmw-cloud-service-property-oa:war exploded" />
-    </root>
-  </artifact>
-</component>
