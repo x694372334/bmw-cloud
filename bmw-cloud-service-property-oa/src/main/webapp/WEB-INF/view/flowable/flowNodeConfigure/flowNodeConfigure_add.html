@@ -1,0 +1,60 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="flowNodeConfigureForm">
+
+            <input type="hidden" id="id" value="">
+ 			<input type="hidden" id="flowConfigureId" value="${flowConfigureId}">
+            <div class="row">
+                <div class="col-sm-12 b-r">
+                           <!--  <#input id="id" name="主键" underline="true"/> 
+                            <#input id="flowConfigureId" name="流程配置id" underline="true"/>-->
+                            <label class="col-sm-3 control-label" style="width:110px !important;float:left;display:block;margin-right:10px;">节点名称</label>
+                            <#input style="width:250px !important;margin-top:-10px;"  class="form-control" id="nodeName" name="" underline="true"/>
+                            <div style="height:27px;"></div>
+                            
+                            <label class="col-sm-3 control-label" style="width:110px !important;float:left;display:block;margin-right:10px;">节点标识码</label>
+                            <#input style="width:250px !important;margin-top:-10px;" class="form-control" id="nodeCode" name="" underline="true"/>
+                            <div style="height:27px;"></div>
+                            
+                             <label class="col-sm-3 control-label" style="width:110px !important;float:left;display:block;margin-right:10px;">顺序</label>
+                             <#input style="width:250px !important;margin-top:-10px;" class="form-control" id="sort" name="" underline="true"/>
+                             <div style="height:27px;"></div>
+                             
+                             <label class="col-sm-3 control-label" style="width:110px !important;float:left;display:block;margin-right:10px;">是否为开始节点</label>
+                            <select style="width:421px;" class="form-control" id="isStart" name="是否为开始节点" underline="true">
+								<option value="1"  >是</option>
+								<option value="2"  selected>否</option>
+							</select>
+							<div style="height:27px;"></div>
+							
+							<label class="col-sm-3 control-label" style="width:110px !important;float:left;display:block;margin-right:10px;">是否为结束节点</label>
+                            <select style="width:421px;" class="form-control" id="isEnd" name="是否为结束节点" underline="true">
+						        <option value="1"  >是</option>
+								<option value="2"  selected>否</option>
+							</select>
+                </div>
+
+             <!--    <div class="col-sm-6">
+                            <#input id="createManId" name="创建人id" underline="true"/>
+                            <#input id="createMan" name="创建人" underline="true"/>
+                            <#input id="createTime" name="创建时间" underline="true"/>
+                            <#input id="editManId" name="修改人id" underline="true"/>
+                            <#input id="editMan" name="修改人" underline="true"/>
+                            <#input id="editTime" name="修改时间" underline="true"/>
+                            <#input id="isDelete" name="是否删除" underline="true"/>
+                </div> -->
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="FlowNodeConfigureInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="FlowNodeConfigureInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/flowable/flowNodeConfigure_info.js"></script>
+@}

@@ -1,0 +1,49 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="id" name="主键id" underline="true"/>
+                            <#input id="standardId" name="关联费用标准主键id" underline="true"/>
+                            <#input id="standardName" name="关联费用标准主键名称" underline="true"/>
+                            <#input id="billNo" name="账单编号" underline="true"/>
+                            <#input id="isFee" name="是否已缴（0：是 1：否）" underline="true"/>
+                            <#input id="ownerId" name="业主ID" underline="true"/>
+                            <#input id="ownerName" name="业主姓名" underline="true"/>
+                            <#input id="objectNo" name="房号/车位号" underline="true"/>
+                            <#input id="ownerPhone" name="业主手机号" underline="true"/>
+                            <#input id="costStartTime" name="费用开始时间" underline="true"/>
+                            <#input id="costEndTime" name="费用结束时间"/>
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="shouldTotal" name="应缴合计" underline="true"/>
+                            <#input id="paidTotal" name="实缴合计" underline="true"/>
+                            <#input id="overdueFine" name="滞纳金" underline="true"/>
+                            <#input id="askCount" name="催缴次数" underline="true"/>
+                            <#input id="status" name="申请优惠状态（待审批、审批通过、已拒绝）" underline="true"/>
+                            <#input id="discountRate" name="优惠比例" underline="true"/>
+                            <#input id="discountAmount" name="优惠金额" underline="true"/>
+                            <#input id="payMode" name="缴费方式" underline="true"/>
+                            <#input id="payWay" name="支付方式：1、现金，2、支付宝，3、微信" underline="true"/>
+                            <#input id="remark" name="备注" underline="true"/>
+                            <#input id="refundAmount" name="退款金额（多次退款累加和）" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="BillInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="BillInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/modular/bill/bill/bill_info.js"></script>
+@}

@@ -1,0 +1,71 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="">
+			<input type="hidden" id="flowNodeConfigureId" value="${flowNodeConfigureId}"/>
+			<input type="hidden" id="conditionValueName" />
+			<input type="hidden" id="conditionValue" />
+			<input type="hidden" id="parentEId"  value="${parentEId}">
+			
+            <div class="row">
+                <div class="col-sm-12 b-r">
+                            <!-- <#input id="id" name="主键" underline="true"/> 
+                            <#input id="flowNodeConfigureId" name="流程节点id" underline="true"/>-->
+                            
+                            <#input id="parentEName" name="所属企业" underline="true" value="${parentEName}" readonly="true"/>
+                            <#select id="conditionType" name="条件类型" underline="true">
+                            	<option value=""  >请选择</option>
+								<option value="0"  >角色</option>
+								<option value="1"  >部门</option>
+								<option value="2"  >SQL语句</option>
+							</#select>
+							
+                            <#input id="pName" name="角色" underline="true" hidden="pid" readonly="readonly"
+							clickFun="FlowNodeConditionInfoDlg.showPNameSelectTree(); return false;"
+							style="background-color: #ffffff !important;"/>
+							<!-- 这是父级菜单下拉框 -->
+							<div id="pNameContent" class="menuContent"
+									style="display: none; position: absolute; z-index: 200;">
+									<ul id="pNameTree" class="ztree tree-box" style="width: 250px !important;"></ul>
+							</div>
+							
+							<#input id="deptName" name="部门" hidden="deptid" readonly="readonly"  underline="true"
+							clickFun="FlowNodeConditionInfoDlg.showDeptSelectTree(); return false;"
+							style="background-color: #ffffff !important;"/>
+							
+								<!-- 这是部门下拉框 -->
+							<div id="deptContent" class="menuContent"
+								style="display: none; position: absolute; z-index: 200;">
+								<ul id="deptTree" class="ztree tree-box" style="width: 250px !important;"></ul>
+							</div>
+							
+							<strong style="display:block;float:left;width:90px;text-indent:35px;">sql语句</strong>
+							
+							<textarea id='sql' rows=20 cols=70 style="width:421px;"></textarea>
+                          <!--   <#input id="createManId" name="创建人id" underline="true"/>
+                            <#input id="createMan" name="创建人"/> -->
+                </div>
+
+               <!--  <div class="col-sm-6">
+                            <#input id="createTime" name="创建时间" underline="true"/>
+                            <#input id="editManId" name="修改人id" underline="true"/>
+                            <#input id="editMan" name="修改人" underline="true"/>
+                            <#input id="editTime" name="修改时间" underline="true"/>
+                            <#input id="isDelete" name="是否删除" underline="true"/>
+                </div> -->
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="FlowNodeConditionInfoDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="FlowNodeConditionInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/flowable/flowNodeCondition_info.js"></script>
+@}

@@ -1,0 +1,36 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${item.id}">
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="name" name="商品名" value="${item.name}" underline="true"/>
+                            <#input id="type" name="型号" value="${item.type}" underline="true"/>
+                            <#input id="specification" name="规格" value="${item.specification}" underline="true"/>
+                            <#input id="unit" name="单位" value="${item.unit}" underline="true"/>
+                            <#input id="price" name="价格" value="${item.price}" />
+                </div>
+
+                <div class="col-sm-6">
+                            <#input id="category" name="类别" value="${item.category}" underline="true"/>
+                            <#input id="isRecommend" name="是否推荐" value="${item.isRecommend}" underline="true"/>
+                            <#input id="backGroundUrl" name="背景色" value="${item.backGroundUrl}" underline="true"/>
+                            <#input id="commodityUrl" name="图片" value="${item.commodityUrl}" underline="true"/>
+                </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="CommodityInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="CommodityInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/app/commodity/commodity_info.js"></script>
+@}

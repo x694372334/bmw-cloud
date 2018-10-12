@@ -1,0 +1,124 @@
+@layout("/common/_container.html"){
+
+	<!-- 首页卡片 -->
+	<div class="row clearfix">
+		<div class="col-sm-12" style="height: 60px;">
+			<iframe class="col-sm-12" name="iframe0" src="${ctxPath}/home/card"
+				frameborder="0" seamless> </iframe>
+		</div>
+	</div>
+	</br>
+	<!-- 个人事务 -->
+	<div class="row clearfix">
+		<div class="row">
+			<ul id="myTab" class="nav nav-pills" style="margin-left:25px;">
+				<li class="active"><a href="#todo" data-toggle="tab"> 待办事项
+				</a></li>
+				<li><a href="#done" data-toggle="tab">已办事项</a></li>
+			</ul>
+			<div id="myTabContent" class="tab-content">
+				<div class="tab-pane fade in active" id="todo">
+					<iframe class="col-sm-12" name="iframe0" src="${ctxPath}/home/todo"
+						frameborder="0" seamless scrolling="no" style="height: 250px;" > </iframe>
+				</div>
+				<div class="tab-pane fade" id="done">
+					<iframe class="col-sm-12" name="iframe0" src="${ctxPath}/home/done"
+						frameborder="0" seamless  scrolling="no" style="min-height:500px;"> </iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+	</br>
+	<!-- 统计报表 -->
+	<div class="row clearfix">
+		<div class="row" >
+			<div class="col-md-2 ">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">收入统计</h3>
+					</div>
+					<div class="panel-body">
+						<iframe class="col-sm-12" name="iframe0"
+							src="${ctxPath}/home/incomeStatistics" frameborder="0"
+							scrolling="no" seamless style="height: 180px;"> </iframe>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-5 ">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">缴费比例</h3>
+					</div>
+					<div class="panel-body">
+						<!-- 缴费比例 -->
+						<iframe class="col-sm-12" name="iframe0"
+							src="${ctxPath}/home/getPayProportion" frameborder="0" seamless style="height: 180px;">
+						</iframe>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-5 ">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">柱形图</h3>
+					</div>
+					<div class="panel-body">
+						<iframe class="col-sm-12" name="iframe0"
+							src="${ctxPath}/home/getAnnualRevenue" frameborder="0" seamless style="height: 180px;">
+						</iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</br>
+	<!-- 系统信息 -->
+	<div class="row clearfix">
+		<div class="row" style="height: 55px;">
+			<div class="col-md-8" >
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">系统简介</h3>
+					</div>
+					<div class="panel-body">
+						<blockquote>
+							君办智慧生活服务平台是为物业企业打造的智慧物业综合管理平台，平台提供了物业缴费、数据管理、消息通知、客户服务等智慧物业管理完整解决方案，在提升住户满意度的同时，更为物业企业提供全新的运营盈利模式。
+						</blockquote>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 ">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">其他信息</h3>
+					</div>
+					<div class="panel-body panel-h">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#panel1" data-toggle="tab">
+									运行地址 </a></li>
+							<li><a href="#panel2" data-toggle="tab"> 支持信息 </a></li>
+							<li><a href="#panel3" data-toggle="tab"> 手册\视频下载</a></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane active" id="panel1">
+								<p class="tweet-text">http://localhost:8099/</p>
+							</div>
+							<div class="tab-pane" id="panel2">
+								<p>支持信息</p>
+							</div>
+							<div class="tab-pane" id="panel3">
+								<ul>
+									<li><a href="http://localhost:8099/"> 用户手册 </a></li>
+									<li><a href="http://localhost:8099/"> 操作录屏 </li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+@}

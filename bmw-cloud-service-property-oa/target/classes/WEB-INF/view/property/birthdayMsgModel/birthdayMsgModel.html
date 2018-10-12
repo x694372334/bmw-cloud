@@ -1,0 +1,74 @@
+@layout("/common/_container.html"){
+<div class="row">
+	<div class="col-sm-12">
+		<div class="ibox float-e-margins">
+			<div class="ibox-title">
+				<h5>管理</h5>
+			</div>
+			<div class="ibox-content">
+				<div class="row row-lg">
+					<!-- <div class="col-sm-12">
+						<div class="row"> -->
+							<div class="col-sm-6">
+								<div class="row form-group">
+									<div class="panel panel-primary">
+										<div class="panel-heading" align="center">
+											<div class="hidden-xs" id="BirthdayMsgModelTableToolbar"
+												role="group">
+												<label>祝福短信模板列表</label>
+												@if(shiro.hasPermission("/birthdayMsgModel/birthdayMsgModel_add")){
+												<#button name="新建模板" icon="fa-plus"
+													clickFun="BirthdayMsgModel.openAddBirthdayMsgModel()" />
+												@}
+												@if(shiro.hasPermission("/birthdayMsgModel/birthdayMsgModel_update")){
+												<#button name="编辑模板" icon="fa-plus"
+													clickFun="BirthdayMsgModel.openBirthdayMsgModelDetail()" space="true" />
+												@}
+												@if(shiro.hasPermission("/birthdayMsgModel/delete")){
+												<#button name="删除模板" icon="fa-remove"
+													clickFun="BirthdayMsgModel.delete()"
+													space="true" />
+												@}	
+												@if(shiro.hasPermission("/birthdayMsgModel/birthdayMsgSetting_add")){
+												<#button name="发送模板设置" icon="fa-remove"
+													clickFun="BirthdayMsgModel.openMsgSetting()" space="true" />
+												@}
+											</div>
+										</div>
+										<div class="panel-body">
+												<#table id="BirthdayMsgModelTable" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6">
+								<div class="row form-group">
+									<div class="panel panel-primary">
+										<div class="panel-heading " align="center" >
+											<div class="hidden-xs" id="BirthdayMsgHisTableToolbar"
+												role="group">																							
+												<label>历史发送记录</label><input id="ownerName" type="text" style="margin-left:8px;text-indent:5px; value="" placeholder="业主姓名"/>
+												<#button name="查找" icon="fa-plus" clickFun="BirthdayMsgHis.search()" />
+												@if(shiro.hasPermission("/birthdayMsgModel/birthdayMsgHis_Export")){
+													<#button name="导出EXCEL" icon="fa-plus" clickFun="BirthdayMsgHis.openExportExcel()" />	
+												@}											
+											</div>
+										</div>
+										<div class="panel-body">
+												<#table id="BirthdayMsgHisTable" />
+										</div>
+									</div>
+								</div>	
+							</div>
+					<!-- 	</div>
+					</div> -->
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script
+	src="${ctxPath}/static/bmw/property/birthdayMsgModel/birthdayMsgHis.js"></script>
+	<script
+	src="${ctxPath}/static/bmw/property/birthdayMsgModel/birthdayMsgModel.js"></script>
+@}

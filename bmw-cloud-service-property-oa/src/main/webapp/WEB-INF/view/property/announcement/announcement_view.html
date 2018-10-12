@@ -1,0 +1,22 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="id" value="${item.id}">
+
+            <div class="row">
+                <strong>标题:</strong>&nbsp;&nbsp;&nbsp;&nbsp;<input id="title"  style="border: 0px;outline:none;cursor: pointer;" value="${item.title}" readonly="true"/>
+				<br/>
+				<br/>
+				<strong>内容:</strong><br/>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<textarea id="content" style="width: 400px" rows="4" readonly="true">${item.content}</textarea>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/announcement/announcement_info.js"></script>
+@}

@@ -1,0 +1,91 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal" id="userInfoForm">
+		
+			<input type="hidden" id="id" value="">
+			<input type="hidden" id="parentEIdReadOnly" value="${parentEIdReadOnly}" >
+			
+			<div class="row">
+				<div class="col-sm-6 b-r">
+					<#input id="account" name="账户" required="true" underline="true"/>
+
+					<#select id="sex" name="性别" underline="true">
+						<option value="1">男</option>
+						<option value="2">女</option>
+					</#select>
+
+					<#input id="password" required="true" name="密码" underline="true" type="password"/>
+
+					<!-- <#input id="roleid" name="角色" underline="true" disabled="disabled"/> -->
+				  <!--   <#input id="citySel" name="部门" underline="true" readonly="readonly" hidden="deptid"
+								clickFun="UserInfoDlg.showDeptSelectTree(); return false;"
+								style="background-color: #ffffff !important;"/> -->
+                            <#input id="parentEName" name="企业" underline="true" hiddenValue="${parentEId}"  value="${parentEName}"
+                            hidden="parentEId" readonly="readonly"
+							clickFun="UserInfoDlg.showEnterpriseSelectTree(); return false;"
+							style="background-color: #ffffff !important;"
+							selectFlag="true" selectId="enterTreeDiv" selectTreeId="enterpriseTree" selectStyle="width:244px !important;"/>
+
+					<#input id="email" name="邮箱" underline="true" type="email"/>
+					@if(parentEIdReadOnly=="1"){
+					<#select id="uAttribute" name="用户类型" underline="true">
+						<option value="">请选择</option>
+						@if(parentEIdReadOnly=="1"){
+						<option value="-1">超级管理员</option>
+						<option value="1">管理员</option>
+						@}
+						@if(parentEIdReadOnly!="1"){
+						<option value="2">普通用户</option>
+						@}
+					</#select>
+					@}
+					@if(parentEIdReadOnly!="1"){
+					<input type="hidden" id="uAttribute" value="2">
+					@}
+				</div>
+				<div class="col-sm-6">
+					<div id="driverInfoContent">
+						<#input id="name" name="姓名" required="true" underline="true"/>
+
+						<#input id="birthday" name="出生日期" underline="true" type="date"
+								clickFun="laydate({istime: false, format: 'YYYY-MM-DD'})"/>
+
+						<#input id="rePassword" name="确认密码" type="password" required="true" underline="true"/>
+
+					    <#input id="positionSel" name="职位" underline="true" readonly="readonly" hidden="positionId"
+								clickFun="UserInfoDlg.showPositionSelectTree(); return false;"
+								style="background-color: #ffffff !important;"/>
+					    <#input id="phone" name="电话" underline="true"/>
+					    <#select id="huanxinFlag" name="是否注册环信" underline="true">
+							<option value="1">是</option>
+							<option value="2">否</option>
+						</#select>
+					</div>
+				</div>
+			</div>
+
+			<!-- 这是部门选择的下拉框 -->
+			<div id="menuContent" class="menuContent"
+				style="display: none; position: absolute; z-index: 200;">
+				<ul id="treeDemo" class="ztree tree-box" style="width: 249px !important;"></ul>
+			</div>
+			
+			<!-- 这是职位选择的下拉框 -->
+			<div id="positionContent" class="menuContent"
+				style="display: none; position: absolute; z-index: 200;">
+				<ul id="pcodeTree" class="ztree tree-box" style="width: 249px !important;"></ul>
+			</div>
+
+			<div class="row btn-group-m-t">
+				<div class="col-sm-10">
+					<#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="UserInfoDlg.addSubmit()"/>
+					<#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="UserInfoDlg.close()"/>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script src="${ctxPath}/static/modular/system/user/user_info.js"></script>
+@}

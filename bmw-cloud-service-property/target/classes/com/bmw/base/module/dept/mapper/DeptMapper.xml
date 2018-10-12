@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bmw.base.module.dept.mapper.DeptMapper" >
+
+    <resultMap id="BaseResultMap" type="com.bmw.base.module.dept.domain.Dept" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="num" property="num" jdbcType="INTEGER" />
+        <result column="pid" property="pid" jdbcType="INTEGER" />
+        <result column="pids" property="pids" jdbcType="VARCHAR" />
+        <result column="simplename" property="simplename" jdbcType="VARCHAR" />
+        <result column="fullname" property="fullname" jdbcType="VARCHAR" />
+        <result column="tips" property="tips" jdbcType="VARCHAR" />
+        <result column="version" property="version" jdbcType="INTEGER" />
+    </resultMap>
+
+    <sql id="column" >
+        id, num, pid, pids, simplename, fullname, tips, version
+    </sql>
+
+    <sql id="column2" >
+        sys_dept.id, sys_dept.num, sys_dept.pid, sys_dept.pids, sys_dept.simplename, sys_dept.fullname, 
+        sys_dept.tips, sys_dept.version
+    </sql>
+
+    <sql id="column3" >
+        sys_dept.id as id, sys_dept.num as num, sys_dept.pid as pid, sys_dept.pids as pids, 
+        sys_dept.simplename as simplename, sys_dept.fullname as fullname, sys_dept.tips as tips, 
+        sys_dept.version as version
+    </sql>
+
+    <sql id="equal" >
+        <if test="id != null" >
+             AND id = #{id}
+        </if>
+        <if test="num != null" >
+             AND num = #{num}
+        </if>
+        <if test="pid != null" >
+             AND pid = #{pid}
+        </if>
+        <if test="pids != null and pids != '' " >
+             AND pids = #{pids}
+        </if>
+        <if test="simplename != null and simplename != '' " >
+             AND simplename = #{simplename}
+        </if>
+        <if test="fullname != null and fullname != '' " >
+             AND fullname = #{fullname}
+        </if>
+        <if test="tips != null and tips != '' " >
+             AND tips = #{tips}
+        </if>
+        <if test="version != null" >
+             AND version = #{version}
+        </if>
+    </sql>
+
+    <sql id="like" >
+        <if test="id != null" >
+             AND id like CONCAT('%',#{id},'%')
+        </if>
+        <if test="num != null" >
+             AND num like CONCAT('%',#{num},'%')
+        </if>
+        <if test="pid != null" >
+             AND pid like CONCAT('%',#{pid},'%')
+        </if>
+        <if test="pids != null and pids != '' " >
+             AND pids like CONCAT('%',#{pids},'%')
+        </if>
+          <if test="fullname != null and fullname != '' and fullname!='null' and simplename != null and simplename != '' and simplename!='null' " >
+             and (simplename like CONCAT('%',#{simplename},'%') or fullname like CONCAT('%',#{fullname},'%'))
+        </if>
+        <if test="tips != null and tips != '' " >
+             AND tips like CONCAT('%',#{tips},'%')
+        </if>
+        <if test="version != null" >
+             AND version like CONCAT('%',#{version},'%')
+        </if>
+    </sql>
+
+    <insert id="add" parameterType="com.bmw.base.module.dept.domain.Dept" >
+        insert into sys_dept
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="num != null" >
+                num,
+            </if>
+            <if test="pid != null" >
+                pid,
+            </if>
+            <if test="pids != null and pids != '' " >
+                pids,
+            </if>
+            <if test="simplename != null and simplename != '' " >
+                simplename,
+            </if>
+            <if test="fullname != null and fullname != '' " >
+                fullname,
+            </if>
+            <if test="tips != null and tips != '' " >
+                tips,
+            </if>
+            <if test="version != null" >
+                version,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="num != null" >
+                #{num,jdbcType=INTEGER},
+            </if>
+            <if test="pid != null" >
+                #{pid,jdbcType=INTEGER},
+            </if>
+            <if test="pids != null and pids != '' " >
+                #{pids,jdbcType=VARCHAR},
+            </if>
+            <if test="simplename != null and simplename != ''" >
+                #{simplename,jdbcType=VARCHAR},
+            </if>
+            <if test="fullname != null and fullname != ''" >
+                #{fullname,jdbcType=VARCHAR},
+            </if>
+            <if test="tips != null and tips != '' " >
+                #{tips,jdbcType=VARCHAR},
+            </if>
+            <if test="version != null" >
+                #{version,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from sys_dept
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <update id="update" parameterType="com.bmw.base.module.dept.domain.Dept" >
+        update sys_dept
+        <set >
+            <if test="num != null" >
+                num = #{num,jdbcType=INTEGER},
+            </if>
+            <if test="pid != null" >
+                pid = #{pid,jdbcType=INTEGER},
+            </if>
+            <if test="pids != null and pids != '' " >
+                pids = #{pids,jdbcType=VARCHAR},
+            </if>
+            <if test="simplename != null and simplename != '' " >
+                simplename = #{simplename,jdbcType=VARCHAR},
+            </if>
+            <if test="fullname != null and fullname != '' " >
+                fullname = #{fullname,jdbcType=VARCHAR},
+            </if>
+            <if test="tips != null and tips != '' " >
+                tips = #{tips,jdbcType=VARCHAR},
+            </if>
+            <if test="version != null" >
+                version = #{version,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="column" />
+        from sys_dept
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="findLike" resultType="Dept" parameterType="Dept" >
+        select 
+        <include refid="column3" />
+        from sys_dept
+        <where >
+            <include refid="like" />
+        </where>
+    </select>
+
+    <select id="findList" resultType="Dept" parameterType="Dept" >
+        select 
+        <include refid="column3" />
+        from sys_dept
+        <where >
+            <include refid="equal" />
+        </where>
+    </select>
+    
+    <select id="tree" resultType="com.bmw.common.utils.oa.ZTreeNode">
+		select id,pid as pId,simplename as name,
+		(
+		CASE
+		WHEN (pId = 0 OR pId IS NULL) THEN
+		'true'
+		ELSE
+		'false'
+		END
+		) as isOpen from sys_dept
+	</select>
+</mapper>

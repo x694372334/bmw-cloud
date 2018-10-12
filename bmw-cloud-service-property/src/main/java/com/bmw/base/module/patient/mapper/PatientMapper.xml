@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bmw.base.module.patient.mapper.PatientMapper" >
+
+    <resultMap id="BaseResultMap" type="com.bmw.base.module.patient.domain.Patient" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="account_id" property="accountId" jdbcType="INTEGER" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="VARCHAR" />
+        <result column="idcard" property="idcard" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="identity_type" property="identityType" jdbcType="VARCHAR" />
+        <result column="birthday" property="birthday" jdbcType="VARCHAR" />
+        <result column="remark" property="remark" jdbcType="VARCHAR" />
+        <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="create_by" property="createBy" jdbcType="TIMESTAMP" />
+        <result column="update_date" property="updateDate" jdbcType="TIMESTAMP" />
+        <result column="update_by" property="updateBy" jdbcType="TIMESTAMP" />
+        <result column="department_code" property="departmentCode" jdbcType="VARCHAR" />
+        <result column="hospital_code" property="hospitalCode" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="column" >
+        id, account_id, name, age, idcard, sex, identity_type, birthday, remark, create_date, 
+        create_by, update_date, update_by, department_code, hospital_code
+    </sql>
+
+    <sql id="column2" >
+        his_patient.id, his_patient.account_id, his_patient.name, his_patient.age, his_patient.idcard, 
+        his_patient.sex, his_patient.identity_type, his_patient.birthday, his_patient.remark, 
+        his_patient.create_date, his_patient.create_by, his_patient.update_date, his_patient.update_by, 
+        his_patient.department_code, his_patient.hospital_code
+    </sql>
+
+    <sql id="column3" >
+        his_patient.id as id, his_patient.account_id as accountId, his_patient.name as name, 
+        his_patient.age as age, his_patient.idcard as idcard, his_patient.sex as sex, his_patient.identity_type as identityType, 
+        his_patient.birthday as birthday, his_patient.remark as remark, his_patient.create_date as createDate, 
+        his_patient.create_by as createBy, his_patient.update_date as updateDate, his_patient.update_by as updateBy, 
+        his_patient.department_code as departmentCode, his_patient.hospital_code as hospitalCode
+    </sql>
+
+    <sql id="equal" >
+        <if test="id != null" >
+             AND id = #{id}
+        </if>
+        <if test="accountId != null" >
+             AND account_id = #{accountId}
+        </if>
+        <if test="name != null and name != ''  and name != 'null'" >
+             AND name = #{name}
+        </if>
+        <if test="age != null and age != '' " >
+             AND age = #{age}
+        </if>
+        <if test="idcard != null and idcard != '' " >
+             AND idcard = #{idcard}
+        </if>
+        <if test="sex != null and sex != '' " >
+             AND sex = #{sex}
+        </if>
+        <if test="identityType != null and identityType != '' " >
+             AND identity_type = #{identityType}
+        </if>
+        <if test="birthday != null and birthday != '' " >
+             AND birthday = #{birthday}
+        </if>
+        <if test="remark != null and remark != '' " >
+             AND remark = #{remark}
+        </if>
+        <if test="createDate != null" >
+             <![CDATA[ AND create_date = #{createDate} ]]>
+        </if>
+        <if test="createBy != null" >
+             <![CDATA[ AND create_by = #{createBy} ]]>
+        </if>
+        <if test="updateDate != null" >
+             <![CDATA[ AND update_date = #{updateDate} ]]>
+        </if>
+        <if test="updateBy != null" >
+             <![CDATA[ AND update_by = #{updateBy} ]]>
+        </if>
+        <if test="departmentCode != null and departmentCode != '' " >
+             AND department_code = #{departmentCode}
+        </if>
+        <if test="hospitalCode != null and hospitalCode != '' " >
+             AND hospital_code = #{hospitalCode}
+        </if>
+    </sql>
+
+    <sql id="like" >
+        <if test="id != null" >
+             AND id like CONCAT('%',#{id},'%')
+        </if>
+        <if test="accountId != null" >
+             AND account_id like CONCAT('%',#{accountId},'%')
+        </if>
+        <if test="name != null and name != '' and name != 'null' " >
+             AND name like CONCAT('%',#{name},'%')
+        </if>
+        <if test="age != null and age != '' " >
+             AND age like CONCAT('%',#{age},'%')
+        </if>
+        <if test="idcard != null and idcard != '' " >
+             AND idcard like CONCAT('%',#{idcard},'%')
+        </if>
+        <if test="sex != null and sex != '' " >
+             AND sex like CONCAT('%',#{sex},'%')
+        </if>
+        <if test="identityType != null and identityType != '' " >
+             AND identity_type like CONCAT('%',#{identityType},'%')
+        </if>
+        <if test="birthday != null and birthday != '' " >
+             AND birthday like CONCAT('%',#{birthday},'%')
+        </if>
+        <if test="remark != null and remark != '' " >
+             AND remark like CONCAT('%',#{remark},'%')
+        </if>
+        <if test="createDate != null" >
+             AND create_date like CONCAT('%',#{createDate},'%')
+        </if>
+        <if test="createBy != null" >
+             AND create_by like CONCAT('%',#{createBy},'%')
+        </if>
+        <if test="updateDate != null" >
+             AND update_date like CONCAT('%',#{updateDate},'%')
+        </if>
+        <if test="updateBy != null" >
+             AND update_by like CONCAT('%',#{updateBy},'%')
+        </if>
+        <if test="departmentCode != null and departmentCode != '' " >
+             AND department_code like CONCAT('%',#{departmentCode},'%')
+        </if>
+        <if test="hospitalCode != null and hospitalCode != '' " >
+             AND hospital_code like CONCAT('%',#{hospitalCode},'%')
+        </if>
+    </sql>
+
+    <insert id="add" parameterType="com.bmw.base.module.patient.domain.Patient" >
+        insert into his_patient
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="accountId != null" >
+                account_id,
+            </if>
+            <if test="name != null and name != '' " >
+                name,
+            </if>
+            <if test="age != null and age != '' " >
+                age,
+            </if>
+            <if test="idcard != null and idcard != '' " >
+                idcard,
+            </if>
+            <if test="sex != null and sex != '' " >
+                sex,
+            </if>
+            <if test="identityType != null and identityType != '' " >
+                identity_type,
+            </if>
+            <if test="birthday != null and birthday != '' " >
+                birthday,
+            </if>
+            <if test="remark != null and remark != '' " >
+                remark,
+            </if>
+            <if test="createDate != null" >
+                create_date,
+            </if>
+            <if test="createBy != null" >
+                create_by,
+            </if>
+            <if test="updateDate != null" >
+                update_date,
+            </if>
+            <if test="updateBy != null" >
+                update_by,
+            </if>
+            <if test="departmentCode != null and departmentCode != '' " >
+                department_code,
+            </if>
+            <if test="hospitalCode != null and hospitalCode != '' " >
+                hospital_code,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="accountId != null" >
+                #{accountId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null and name != '' " >
+                #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null and age != '' " >
+                #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null and idcard != '' " >
+                #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null and sex != '' " >
+                #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="identityType != null and identityType != '' " >
+                #{identityType,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null and birthday != '' " >
+                #{birthday,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null and remark != '' " >
+                #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createBy != null" >
+                #{createBy,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null" >
+                #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null" >
+                #{updateBy,jdbcType=TIMESTAMP},
+            </if>
+            <if test="departmentCode != null and departmentCode != '' " >
+                #{departmentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hospitalCode != null and hospitalCode != '' " >
+                #{hospitalCode,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from his_patient
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <update id="update" parameterType="com.bmw.base.module.patient.domain.Patient" >
+        update his_patient
+        <set >
+            <if test="accountId != null" >
+                account_id = #{accountId,jdbcType=INTEGER},
+            </if>
+            <if test="name != null and name != '' " >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="age != null and age != '' " >
+                age = #{age,jdbcType=VARCHAR},
+            </if>
+            <if test="idcard != null and idcard != '' " >
+                idcard = #{idcard,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null and sex != '' " >
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="identityType != null and identityType != '' " >
+                identity_type = #{identityType,jdbcType=VARCHAR},
+            </if>
+            <if test="birthday != null and birthday != '' " >
+                birthday = #{birthday,jdbcType=VARCHAR},
+            </if>
+            <if test="remark != null and remark != '' " >
+                remark = #{remark,jdbcType=VARCHAR},
+            </if>
+            <if test="createDate != null" >
+                create_date = #{createDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="createBy != null" >
+                create_by = #{createBy,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateDate != null" >
+                update_date = #{updateDate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updateBy != null" >
+                update_by = #{updateBy,jdbcType=TIMESTAMP},
+            </if>
+            <if test="departmentCode != null and departmentCode != '' " >
+                department_code = #{departmentCode,jdbcType=VARCHAR},
+            </if>
+            <if test="hospitalCode != null and hospitalCode != '' " >
+                hospital_code = #{hospitalCode,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="column" />
+        from his_patient
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="findLike" resultType="Patient" parameterType="Patient" >
+        select 
+        <include refid="column3" />
+        from his_patient
+        <where >
+            <include refid="like" />
+        </where>
+    </select>
+
+    <select id="findList" resultType="Patient" parameterType="Patient" >
+        select 
+        <include refid="column3" />
+        from his_patient
+        <where >
+            <include refid="equal" />
+        </where>
+    </select>
+</mapper>

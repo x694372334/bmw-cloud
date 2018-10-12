@@ -1,0 +1,77 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="RoomCheckRecordForm">
+          	<input type="hidden" id="id" value="${item.id}">
+			<input type="hidden" id="roomId" value="${item.roomId}">
+            <div class="row">
+                <div class="col-sm-6 b-r">
+                            <#input id="ownerName" name="业主姓名" underline="flash" value="${item.ownerName}"/>
+                </div>   
+            	<div class="col-sm-6 b-r">             
+							<#input id="citySel" name="房屋号"  readonly="readonly" value="${item.roomNum}"
+								clickFun="RoomCheckRecordInfoDlg.showRoomSelectTree(); return false;"
+								style="background-color: #ffffff !important;"></#input>  
+				</div>				
+			</div>	
+			
+			 <div class="row">	
+			 	<div class="col-sm-6 b-r">			                               
+						<#input id="contact" name="联系方式" underline="flash" value="${item.contact}"/>
+				</div>
+				<div class="col-sm-6 b-r">			
+                        <#input id="checkTime" name="验房时间" underline="flash" value='${item.checkTimeString}' 
+                            type="datetime" clickFun="laydate({istime: flash, format: 'YYYY-MM-DD hh:mm:ss'})"/>
+                </div>            
+            </div>                
+            <div class="row">	
+            		<div class="col-sm-6 b-r">                
+                            <#select id="principalUserId" name="负责人">
+	                            	@for(user in userList){                            		
+                                		<option value="${user.id}"
+                                			@if(item.principalUserId==user.id){
+                                				selected
+                                			@}
+                                		>${user.name}</option>
+                                	@}
+	                        </#select>
+	                </div>
+	                <div class="col-sm-6 b-r">
+	                        <#select id="status" name="状态">
+	                       		 @for(status in statusList){
+                                		<option value="${status.num}"
+                                			@if(item.status==status.num){
+                                				selected
+                                			@}
+                                		>${status.name}</option>
+                                	@}
+	                            	
+	                        </#select>
+	                </div>
+	         </div>
+                
+            
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-10">
+					<h4 style="float:left;margin-left:50px;">备注</h4>
+					<textarea id="remark" class="form-control"  rows="4" cols="2" value="${item.remark}" style="margin-left:90px;width:590px;">${item.remark}</textarea>
+				</div>
+			</div>
+			  <!-- 这是房间选择的下拉框 -->
+			<div id="roomContent" class="roomContent"
+				style="display: none; position: absolute; z-index: 200;">
+				<ul id="treeDemo" class="ztree tree-box" style="width: 205px !important;"></ul>
+			</div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="RoomCheckRecordInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="RoomCheckRecordInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/roomCheckRecord/roomCheckRecord_info.js"></script>
+@}

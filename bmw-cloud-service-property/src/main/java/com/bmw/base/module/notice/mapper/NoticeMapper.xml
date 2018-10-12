@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bmw.base.module.notice.mapper.NoticeMapper" >
+
+    <resultMap id="BaseResultMap" type="com.bmw.base.module.notice.domain.Notice" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="title" property="title" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="INTEGER" />
+        <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+        <result column="creater" property="creater" jdbcType="INTEGER" />
+        <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    </resultMap>
+
+    <sql id="column" >
+        id, title, type, createtime, creater, content
+    </sql>
+
+    <sql id="column2" >
+        sys_notice.id, sys_notice.title, sys_notice.type, sys_notice.createtime, sys_notice.creater
+        , sys_notice.content
+    </sql>
+
+    <sql id="column3" >
+        sys_notice.id as id, sys_notice.title as title, sys_notice.type as type, sys_notice.createtime as createtime, 
+        sys_notice.creater as creater, sys_notice.content as content
+    </sql>
+
+    <sql id="equal" >
+        <if test="id != null" >
+             AND id = #{id}
+        </if>
+        <if test="title != null and title != '' " >
+             AND title = #{title}
+        </if>
+        <if test="type != null" >
+             AND type = #{type}
+        </if>
+        <if test="createtime != null" >
+             <![CDATA[ AND createtime = #{createtime} ]]>
+        </if>
+        <if test="creater != null" >
+             AND creater = #{creater}
+        </if>
+        <if test="content != null and content != '' " >
+             AND content = #{content}
+        </if>
+    </sql>
+
+    <sql id="like" >
+        <if test="id != null" >
+             AND id like CONCAT('%',#{id},'%')
+        </if>
+        <if test="title != null and title != '' " >
+             AND title like CONCAT('%',#{title},'%')
+        </if>
+        <if test="type != null" >
+             AND type like CONCAT('%',#{type},'%')
+        </if>
+        <if test="createtime != null" >
+             AND createtime like CONCAT('%',#{createtime},'%')
+        </if>
+        <if test="creater != null" >
+             AND creater like CONCAT('%',#{creater},'%')
+        </if>
+        <if test="content != null and content != '' " >
+             AND content like CONCAT('%',#{content},'%')
+        </if>
+    </sql>
+
+    <insert id="add" parameterType="com.bmw.base.module.notice.domain.Notice" >
+        insert into sys_notice
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="title != null and title != '' " >
+                title,
+            </if>
+            <if test="type != null" >
+                type,
+            </if>
+            <if test="createtime != null" >
+                createtime,
+            </if>
+            <if test="creater != null" >
+                creater,
+            </if>
+            <if test="content != null and content != '' " >
+                content,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="title != null and title != '' " >
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null" >
+                #{type,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null" >
+                #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creater != null" >
+                #{creater,jdbcType=INTEGER},
+            </if>
+            <if test="content != null and content != '' " >
+                #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer" >
+        delete from sys_notice
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+
+    <update id="update" parameterType="com.bmw.base.module.notice.domain.Notice" >
+        update sys_notice
+        <set >
+            <if test="title != null and title != '' " >
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="type != null" >
+                type = #{type,jdbcType=INTEGER},
+            </if>
+            <if test="createtime != null" >
+                createtime = #{createtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creater != null" >
+                creater = #{creater,jdbcType=INTEGER},
+            </if>
+            <if test="content != null and content != '' " >
+                content = #{content,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+        select 
+        <include refid="column" />
+        from sys_notice
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="findLike" resultType="Notice" parameterType="Notice" >
+        select 
+        <include refid="column3" />
+        from sys_notice
+        <where >
+            <include refid="like" />
+        </where>
+    </select>
+
+    <select id="findList" resultType="Notice" parameterType="Notice" >
+        select 
+        <include refid="column3" />
+        from sys_notice
+        <where >
+            <include refid="equal" />
+        </where>
+    </select>
+    
+    
+    <select id="list" resultType="map">
+        select 
+        <include refid="column3" />
+        from sys_notice
+        <if test="condition != null and condition != '' and condition != 'null'">
+            where title like CONCAT('%',#{condition},'%') or content like CONCAT('%',#{condition},'%')
+        </if>
+        order by createtime DESC
+    </select>
+</mapper>

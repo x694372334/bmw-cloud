@@ -1,0 +1,48 @@
+@layout("/common/_container.html"){
+<div class="row" style="width:720px;margin:0 auto;">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+         <!--    <div class="ibox-title">
+                <h5>批量关联收费标准管理</h5>
+            </div> -->
+            
+             <input type="hidden" id="relevanceId" value="${item.relevanceId}">
+             <input type="hidden" id="id" value="${item.id}">
+             <input type="hidden" id="nbId" value="${item.nbId}">
+             <input type="hidden" id="standardId" value="${item.standardId}">
+             <input type="hidden" id="standardName" value="${item.standardName}">
+             <input type="hidden" id="nbName" value="${item.nbName}">
+             <input type="hidden" id="costId" value="${item.costId}">
+             <input type="hidden" id="eId" value="${item.eId}">
+             <input type="hidden" id="chargeableStartDate" value="${item.chargeableStartDate,dateFormat="yyyy-MM-dd"}">
+             <input type="hidden" id="chargeableEndDate" value="${item.chargeableEndDate,dateFormat="yyyy-MM-dd"}">
+             
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+	                         <div class="col-sm-9">
+		                         <div class="ue-container">
+									 <select multiple="multiple" size="22" name="scopeIds" class="scopeIds" id="scopeIds">
+									 </select>
+					             </div>
+	                          </div>
+                  
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+         <div class="row btn-group-m-t">
+                <div class="col-sm-10" style="margin-top:-20px !important;">
+                    <#button btnCss="info" name="保存" id="ensure" icon="fa-check" clickFun="ScopeIdsDlg.addSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="ScopeIdsDlg.close()"/>
+                </div>
+            </div>
+    </div>
+</div>
+<link href="${ctxPath}/static/css/font-awesome.css" rel="stylesheet">
+<link href="${ctxPath}/static/css/doublebox-bootstrap.css" rel="stylesheet">
+<script src="${ctxPath}/static/bmw/property/batchStandards/addScopeIds.js"></script>
+<script src="${ctxPath}/static/js/doublebox-bootstrap.js"></script>
+@}

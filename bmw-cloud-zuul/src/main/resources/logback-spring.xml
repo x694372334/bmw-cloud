@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are by default assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder -->
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%level] - %m%n</pattern>
+			
+		<!-- 常用的Pattern变量,大家可打开该pattern进行输出观察 -->
+        <!-- 
+          <pattern>
+              %d{yyyy-MM-dd HH:mm:ss} [%level] - %msg%n
+              Logger: %logger
+              Class: %class
+              File: %file
+              Caller: %caller
+              Line: %line
+              Message: %m
+              Method: %M
+              Relative: %relative
+              Thread: %thread
+              Exception: %ex
+              xException: %xEx
+              nopException: %nopex
+              rException: %rEx
+              Marker: %marker
+              %n
+              
+          </pattern>
+           -->
+		</encoder>
+	</appender>
+
+
+	<!-- 按日期和大小区分的滚动日志 -->
+	<appender name="bmw_Logs" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs-zuul/bmw-zuul-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] [%level] [%class:%line] [%M] - %m%n</pattern>
+		</encoder>
+	</appender>
+	
+	
+	
+	<!-- 日志级别  ALL<RACE<DEBUG<INFO<WARN<ERROR<OFF -->
+	
+	<!-- additivity：是否向root传递日志 -->
+	  
+	
+	
+	
+	<springProfile name="prod">
+		<logger name="com.bmw" level="error" additivity="true"></logger>
+		
+		<root level="error">
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="bmw_Logs" />
+		</root>
+	</springProfile>
+	
+	<springProfile name="test">
+		<logger name="com.bmw" level="error" additivity="true"></logger>
+		
+		<root level="error">
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="bmw_Logs" />
+		</root>
+	</springProfile>
+	
+	<springProfile name="dev">
+		<logger name="com.bmw" level="debug" additivity="true"></logger>
+		
+		<root level="error">
+			<appender-ref ref="STDOUT" />
+			<appender-ref ref="bmw_Logs" />
+		</root>
+	</springProfile>
+	
+
+
+</configuration>
+
+

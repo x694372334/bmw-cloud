@@ -1,0 +1,2 @@
+2018-10-11 14:27:59 [main] [INFO] [org.springframework.boot.SpringApplication:597] [logStartupProfileInfo] - The following profiles are active: dev
+2018-10-11 14:28:06 [main] [INFO] [org.springframework.boot.StartupInfoLogger:57] [logStarted] - Started Running in 8.14 seconds (JVM running for 8.828)

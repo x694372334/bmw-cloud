@@ -1,0 +1,55 @@
+/* ==========================================================================
+Icon packs
+========================================================================== */
+@font-face {
+	font-family: 'brocolidry';
+	src: url('../fonts/brocolidry.woff') format('woff'),
+		url('../fonts/brocolidry.svg#brocolidry') format('svg');
+}
+
+@font-face {
+	font-family: 'ecoico';
+	src: url('../fonts/ecoico.woff') format('woff'),
+		url('../fonts/ecoico.svg#ecoico') format('svg');
+}
+
+@font-face {
+	font-family: 'steadysets';
+	src: url('../fonts/steadysets.woff') format('woff'),
+		url('../fonts/steadysets.svg#steadysets') format('svg');
+}
+
+/* ------------------ Brocolidry --------------------*/
+[class^="br-"] {
+	font-family: 'brocolidry';
+	font-style: normal;
+	line-height: 1;
+}
+
+.br-cart:before {
+	content: "\e608";
+}
+/* ------------------ Eco ico --------------------*/
+[class^="ec-"] {
+	font-family: 'ecoico';
+	font-style: normal;
+	line-height: 1;
+}
+
+.ec-users:before {
+	content: "\e605";
+}
+
+.ec-images:before {
+	content: "\e620";
+}
+/* ------------------ Steadysets --------------------*/
+[class^="st-"] {
+	font-family: 'steadysets';
+	font-style: normal;
+	line-height: 1;
+}
+
+.st-chat:before {
+	content: "\e62a";
+}

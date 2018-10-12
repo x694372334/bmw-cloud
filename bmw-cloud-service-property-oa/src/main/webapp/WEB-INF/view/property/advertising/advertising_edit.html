@@ -1,0 +1,45 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="advertisingInfoForm">
+
+            <input type="hidden" id="aId" value="${item.aId}">
+            <input type="hidden" id="nId" value="${item.nId}">
+
+            <div class="row">
+			<div class="col-sm-6 b-r">
+				<label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-right:10px;margin-left:-5px;">广告位名称<span style="color:red;">*</</span></label>
+                <#input style="width:200px;float:left;margin-top:-25px;margin-left:110px;" id="aName" name="" value="${item.aName}" underline="true"/>
+               
+                
+                <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-right:10px;margin-left:-5px;">广告位类型<span style="color:red;">*</</span></label>
+                <div style="width:380px;float:left;margin-top:-25px;margin-left:10px;">
+                <#select style="width:200px;" class="form-control" id="aType" name="" value="${item.aType}"  underline="true"  />
+                </div>
+               
+                
+                <label class="col-sm-3 control-label" style="width:100px !important;float:left;display:block;margin-right:10px;margin-left:-5px;">广告位状态<span style="color:red;">*</</span></label>
+                <div style="width:380px;float:left;margin-top:-25px;margin-left:10px;">
+                <#select style="width:200px;" class="form-control" id="aStatus" name="" value="${item.aStatus}" underline="true" />
+                </div>
+                
+             </div>
+            <div class="col-sm-6 b-r">
+            <#input id="aPhone" name="联系方式" value="${item.aPhone}" underline="true" required="true" />
+                 <#select id="test" name="关联小区"  underline="true" required="true" />
+            </div>
+            </div>
+
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="AdvertisingInfoDlg.editSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="AdvertisingInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/advertising/advertising_info.js"></script>
+@}
+                

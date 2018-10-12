@@ -1,0 +1,67 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>小区活动管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <#NameCon id="activityName" name="活动名" value='' />
+                              
+                            </div>
+                              <div class="col-sm-3">
+                                <#select id="initiatorId" name="发起人">
+                                	<option value="">全部</option>
+                                	@for(user in userList){
+                                		<option value="${user.id}">${user.name}</option>
+                                	@}
+                                </#select>
+                            </div>
+                              <div class="col-sm-3">
+                                <#select id="verifierId" name="审核人">
+                                	<option value="">全部</option>
+                                	@for(user in userList){
+                                		<option value="${user.id}">${user.name}</option>
+                                	@}
+                                </#select>
+                            </div>
+                            <div class="col-sm-3">
+                                <#button name="搜索" icon="fa-search" clickFun="CommunityActivity.search()"/>
+                            </div>
+                        </div>
+                        <div class="hidden-xs" id="CommunityActivityTableToolbar" role="group">
+                        		@if(shiro.hasPermission("/communityActivity/communityActivity_add")){
+                                	<#button name="添加" icon="fa-plus" clickFun="CommunityActivity.openAddCommunityActivity()"/>
+                                 @}
+                                 @if(shiro.hasPermission("/communityActivity/communityActivity_update")){
+                                	<#button name="修改" icon="fa-edit" clickFun="CommunityActivity.openCommunityActivityUpdate()" space="true"/>
+                                 @}
+                                 @if(shiro.hasPermission("/communityActivity/communityActivity_detail")){
+                               		<#button name="详情" icon="fa-edit" clickFun="CommunityActivity.openCommunityActivityDetail()" space="true"/>         
+                                 @}
+                                 @if(shiro.hasPermission("/communityActivity/delete")){
+                                	 <#button name="删除" icon="fa-remove" clickFun="CommunityActivity.delete()" space="true"/>
+                                 @}
+                                 @if(shiro.hasPermission("/communityActivity/sub")){
+                               		<#button name="提交" icon="fa-edit" clickFun="CommunityActivity.sub()" space="true"/>
+                                 @}
+                                 @if(shiro.hasPermission("/communityActivity/callback")){
+                                	 <#button name="撤回" icon="fa-remove" clickFun="CommunityActivity.callback()" space="true"/>
+                                 @}
+                                 @if(shiro.hasPermission("/communityActivity/pub")){
+                                	 <#button name="发布" icon="fa-edit" clickFun="CommunityActivity.pub()" space="true"/>
+                                 @}
+                        </div>
+                        <#table id="CommunityActivityTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/CommunityActivity/communityActivity.js"></script>
+@}

@@ -1,0 +1,48 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" >
+        <table id="BillTable"></table>
+			<input   type="hidden" id="ids" value="${ids}">
+            <!-- <input   type="hidden" id="paidTotals"> -->
+            <div class="row"> 
+                <div class="col-sm-10 ">
+                           	<!-- &nbsp;&nbsp;&nbsp;&nbsp;<strong>姓名 </strong>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;  <input id="ownerName" style="border: 0px;outline:none;cursor: pointer;"  readonly="true"/> -->
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>小区 </strong>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;  <input id="neighborhoodsName" style="border: 0px;outline:none;cursor: pointer;"  readonly="true"/>
+                           <!--  &nbsp;&nbsp;&nbsp;&nbsp;<strong>手机号</strong>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;  <input id="ownerPhone" style="border: 0px;outline:none;cursor: pointer;" readonly="true"/>
+                            <br/>
+                            <br/> -->
+                            &nbsp;&nbsp;&nbsp;&nbsp;<strong>房号/车位号</strong>&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;&nbsp;  <input id="objectNo"  style="border: 0px;outline:none;cursor: pointer;" readonly="true"/>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <div style="border:solid 1px #CCC;">
+			<table  id="chargeTable" style="border-collapse:   separate;   border-spacing: 10px;">
+             	<tr>  
+                	<th style="text-align:center;" width=100>账单编号</th>  
+                	<th style="text-align:center;" width=100>费用名</th>  
+                	<th style="text-align:center;" width=200>费项开始时间</th>  
+                	<th style="text-align:center;" width=200>费项结束时间</th> 
+               	    <th style="text-align:center;" width=100>应收合计</th>
+                	<th style="text-align:center;" width=100>优惠</th>
+                	<th style="text-align:center;" width=100>滞纳金</th>
+                	<th style="text-align:center;" width=100>实收合计</th> 
+            	</tr> 
+            	<tbody id="tbody-result"> 
+            </table> 
+            <br/>
+           	<br/>
+           	<input  style="border: 0px;outline:none;cursor: pointer; float:left; width:30px" readonly="true"> 
+           	<span><font style="float:left;" color="red"> 实收合计 ：</font>
+            <input  style="border: 0px;outline:none;cursor: pointer; float:left; width:1041px" readonly="true"> 
+           	<div id="paidTotals" style="float:left;color:#F00"></div></span>
+           	<br/>
+           	<br/>
+           	</div>
+			<br/>
+           	<br/> 
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/bill/bill_charge.js"></script>
+@}

@@ -1,0 +1,39 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal">
+			<input type="hidden" id="orderId" value=${order.orderId}>
+			<div class="row">
+				<div class="col-sm-12">
+					<ul class="list-group">
+						<li class="list-group-item"><span class="text-success">服务类别：</span>${order.serviceSortName}</li>
+						<li class="list-group-item"><span class="text-success">服务方式：</span>${order.serviceTypeName}
+							<#button btnCss="warning" name="服务详情" id="cancel" icon="fa-eraser" clickFun="SpecialServiceOrderDetail.openService(${order.serviceId})"/>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+				<h4 style="display:inline-block;">评价：</h4>
+					@for(var i=0;i<order.fevaluateScore;i++){
+						<i class="fa fa-star fa-2x text-danger"></i>
+					@}
+					@for(var i=0;i<5-order.fevaluateScore;i++){
+						<i class="fa fa-star fa-2x"></i>
+					@}
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<h4>备注</h4>
+					<textarea id="desc" class="form-control"  rows="4" cols="3" >${order.fevaluateContent}</textarea>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script
+	src="${ctxPath}/static/bmw/property/specialServiceOrder/specialServiceOrder_detail.js"></script>
+@}

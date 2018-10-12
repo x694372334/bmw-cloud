@@ -1,0 +1,99 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="batchStandardsForm">
+
+  
+                 <div class="row" style="width:780px;margin:0 auto;">
+             	<div class="ibox">
+                    <div class="ibox-content">      
+		
+				 <div class="row">
+							<div class="col-sm-12">
+								<h4><span class="text-success">所属小区：</span>${item.nbName}</h4>
+							</div>
+				</div>
+				
+				<div class="hr-line-dashed"></div>
+                
+                <div class="row">
+							<div class="col-sm-6">
+								<h4><span class="text-success">收费项目：</span>${item.costName}</h4>
+							</div>
+							<div class="col-sm-6">
+								<h4><span class="text-success">收费标准名称：</span>${item.standardName}</h4>
+							</div>
+				</div>
+				
+				<div class="hr-line-dashed"></div>
+				
+				
+				<div class="row">
+							<div class="col-sm-6">
+								<h4><span class="text-success">计费开始时间：</span>
+								@if(item.chargeableStartDate == null){
+	                            	无开始时间
+	                            @}else {
+	                            	${item.chargeableStartDate,dateFormat="yyyy-MM-dd"}
+	                            @}
+								</h4>
+							</div>
+							<div class="col-sm-6">
+								<h4><span class="text-success">计费结束时间：</span>
+								@if(item.chargeableEndDate == null){
+	                            	无结束时间
+	                            @}else {
+	                            	${item.chargeableEndDate,dateFormat="yyyy-MM-dd"}
+	                            @}
+								</h4>
+							</div>
+				</div>
+				
+				<div class="hr-line-dashed"></div>
+				
+				<div class="row">
+	                        <div class="col-sm-12">
+	                        	<h4><span class="text-success">关联范围：</span></h4>
+	                        	<div class="panel panel-default" style="width:755px;">
+									<div class="panel-body">
+										 ${item.scopeNames}
+									</div>
+								</div>
+							</div>
+				</div>
+						
+				
+				
+				
+				<div class="row">
+	                        <div class="col-sm-12">
+	                        	<h4><span class="text-success">备注：</span></h4>
+	                        	<div class="panel panel-default" style="width:755px;">
+									<div class="panel-body">
+										 ${item.remark}
+									</div>
+								</div>
+							</div>
+				</div>
+						
+				<div class="hr-line-dashed"></div>
+				
+				
+				</div></div></div>
+                
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="danger" name="关闭" id="cancel" icon="fa-eraser" clickFun="parent.layer.close(window.parent.BatchStandards.layerIndex)"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- <script src="${ctxPath}/static/bmw/property/batchStandards/batchStandards_info.js"></script>
+<script type="text/javascript" src="${ctxPath}/static/js/plugins/wangEditor/wangEditor.js"></script>
+
+<script type="text/javascript" src="${ctxPath}/static/js/bootstrap-switch/bootstrap-switch.js"></script>
+<link href="${ctxPath}/static/css/bootstrap-switch/bootstrap3/bootstrap-switch.css" rel="stylesheet"> -->
+@}

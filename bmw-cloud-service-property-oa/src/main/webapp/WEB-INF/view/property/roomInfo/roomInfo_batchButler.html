@@ -1,0 +1,30 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+    	<div class="form-horizontal">
+            <div class="row">
+          			<div class="col-xs-6">
+                    	<label>请选择需关联的房间</label>
+                        <ul id="zTree" class="ztree"></ul> 
+                    </div>
+		           	<div class="col-xs-6">
+		 				 <ul class="list-group">
+		 				 @for(user in users){
+		 				 	<li class="list-group-item">
+		 				 		<input type="radio" name="stewardId" value="${user.id}">${user.name}
+		 				 	</li>
+		 				 @} 	
+		 				 </ul>
+		           	</div>
+            </div>
+        </div>
+         <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="保存管家" id="ensure" icon="fa-check" clickFun="RoomInfoInfoDlg.editButlerSubmit()"/>
+                </div>
+            </div>
+    </div>
+</div>
+
+<script src="${ctxPath}/static/bmw/property/roomInfo/Butler.js"></script>
+@}

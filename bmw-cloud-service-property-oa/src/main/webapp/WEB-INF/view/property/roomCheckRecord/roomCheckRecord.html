@@ -1,0 +1,64 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>收房验房管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                           <div class="col-sm-2">
+                                <#NameCon id="ownerName" name="业主姓名" value='' />                             
+                            </div>
+                            <div class="col-sm-3">
+                                <#input id="citySel" name="房屋号"  readonly="readonly" hidden="roomId"
+								clickFun="RoomCheckRecord.showRoomSelectTree(); return false;"
+								style="background-color: #ffffff !important;"></#input>                      	
+                            </div>
+                             <div class="col-sm-2">
+	                            <#NameCon id="contact" name="联系电话" value='' />    
+                            </div>
+                            <div class="col-sm-3">
+	                            <#select id="principalUserId" name="负责人">
+	                            	<option value="">请选负责人</option>
+	                            	@for(user in userList){
+                                		<option value="${user.id}">${user.name}</option>
+                                	@}
+	                            </#select>
+                            </div>
+                           
+                            <div class="col-sm-2"style="width:100px;">
+                                <#button name="搜索" icon="fa-search" clickFun="RoomCheckRecord.search()"/>
+                            </div>
+                        </div>
+                         <!-- 这是房间选择的下拉框 -->
+						<div id="roomContent" class="roomContent"
+							style="display: none; position: absolute; z-index: 200;">
+							<ul id="treeDemo" class="ztree tree-box" style="width: 249px !important;"></ul>
+						</div>
+                        <div class="hidden-xs" id="RoomCheckRecordTableToolbar" role="group">
+                       		@if(shiro.hasPermission("/roomCheckRecord/roomCheckRecord_add")){
+                               	<#button name="添加" icon="fa-plus" clickFun="RoomCheckRecord.openAddRoomCheckRecord()"/>                             
+                        	@}
+                        	@if(shiro.hasPermission("/roomCheckRecord/roomCheckRecord_update")){
+                               	<#button name="修改" icon="fa-edit" clickFun="RoomCheckRecord.openRoomCheckRecordUpdate()" space="true"/>                         
+                        	@}
+                        	@if(shiro.hasPermission("/roomCheckRecord/roomCheckRecord_detail")){
+                               	<#button name="详情" icon="fa-edit" clickFun="RoomCheckRecord.openRoomCheckRecordDetail()" space="true"/>                    
+                        	@}
+                        	@if(shiro.hasPermission("/roomCheckRecord/delete")){
+                               	<#button name="删除" icon="fa-remove" clickFun="RoomCheckRecord.delete()" space="true"/>                            
+                        	@}                                                  
+                        </div>
+                        
+                        <#table id="RoomCheckRecordTable"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/roomCheckRecord/roomCheckRecord.js"></script>
+@}

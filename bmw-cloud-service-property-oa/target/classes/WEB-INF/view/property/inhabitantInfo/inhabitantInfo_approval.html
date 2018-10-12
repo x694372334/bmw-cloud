@@ -1,0 +1,39 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal" id="inhabitantInfoForm">
+
+            <input type="hidden" id="iId" value="${item.iId}">
+            <input type="hidden" id="rId" value="${item.rId}">
+            
+
+            <div class="row">
+                 <div class="col-sm-6 b-r">
+                 <#input id="iName" name="住户姓名" value="${item.iName}" underline="true" disabled="disabled" />
+                 <#select id="iGender" name="住户性别"  underline="true" disabled="disabled" ></#select>
+                 <#input id="iIdcardno" name="业主身份证号" value="${item.iIdcardno}"  underline="true" disabled="disabled"  />
+                 <#input id="iPhoneno" name="住户手机号码" value="${item.iPhoneno}"  underline="true" disabled="disabled" />
+                 <#select id="iIdentity" name="住户身份"  underline="true" disabled="disabled" ></#select>
+                 <#select id="oStatus" name="入住状态" underline="true" disabled="disabled" ></#select>
+                 <#input id="iInterest" name="爱好" value="${item.iInterest}"  underline="true" disabled="disabled" />
+                 <#input id="iProfession" name="职业" value="${item.iProfession}" underline="true" disabled="disabled" />
+                 <#input id="iCompany" name="公司" value="${item.iCompany}" underline="true" disabled="disabled" />
+                 <#input id="iPet" name="宠物" value="${item.iPet}" underline="true" disabled="disabled" />
+                 <#input id="citySel" name="房屋号"  readonly="readonly" hidden="roomId"
+                    value="${item.rRoomnum}"
+					clickFun="InhabitantInfoInfoDlg.showRoomSelectTree(); return false;"
+					style="background-color: #ffffff !important;" disabled="disabled"></#input>        
+           	</div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="提交" id="ensure" icon="fa-check" clickFun="InhabitantInfoInfoDlg.flowabledAddSubmit()"/>
+                    <#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser" clickFun="InhabitantInfoInfoDlg.close()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/inhabitantInfo/inhabitantInfo_info.js"></script>
+@}

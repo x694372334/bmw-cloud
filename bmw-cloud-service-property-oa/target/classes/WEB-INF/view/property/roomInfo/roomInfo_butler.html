@@ -1,0 +1,28 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+    <div class="ibox-content">
+        <div class="form-horizontal">
+
+            <input type="hidden" id="rId" value="${item.rId}">
+            <input type="hidden" id="stewardId" >
+            <input type="hidden" id="stewardName" >
+
+            <div class="row">
+                <div class="col-sm-6 b-r">
+ 				 <#select id="butler" name="请选择管家:" underline="true" required="true"></#select>
+<!--  		     <#input name="Excel" id="file" /> -->
+<!--   <img src="" class="img" /> -->
+           	</div>
+            </div>
+            <div class="row btn-group-m-t">
+                <div class="col-sm-10">
+                    <#button btnCss="info" name="保存管家" id="ensure" icon="fa-check" clickFun="RoomInfoInfoDlg.editButlerSubmit()"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="${ctxPath}/static/bmw/property/roomInfo/roomInfo_info.js"></script>
+@}

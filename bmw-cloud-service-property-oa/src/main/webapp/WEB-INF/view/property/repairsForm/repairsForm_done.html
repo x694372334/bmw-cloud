@@ -1,0 +1,56 @@
+@layout("/common/_container.html"){
+<div class="row">
+    <div class="col-sm-12">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>报事报修管理</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <#NameCon id="ownerName" name="业主姓名" value='' />                             
+                            </div>
+                            <div class="col-sm-3">
+                                <#input id="citySel" name="房屋号"  readonly="readonly" hidden="roomId"
+								clickFun="RepairsForm.showRoomSelectTree(); return false;"
+								style="background-color: #ffffff !important;"></#input>                      	
+                            </div>
+                            <div class="col-sm-2">
+	                            <#select id="stewardUserId" name="管家">
+	                            	<option value="">请选择管家</option>
+	                            	@for(user in userList){
+                                		<option value="${user.id}">${user.name}</option>
+                                	@}
+	                            </#select>
+                            </div>
+                            <div class="col-sm-2">
+	                            <#select id="status" name="状态">
+	                            	<option value="">请选择状态</option>
+	                            	@for(status in statusList){
+                                		<option value="${status.num}">${status.name}</option>
+                                	@}
+	                            </#select>
+                            </div>
+                            <div class="col-sm-2">
+                                <#button name="搜索" icon="fa-search" clickFun="RepairsForm.search()"/>
+                            </div>
+                        </div>
+                        <!-- 这是房间选择的下拉框 -->
+						<div id="roomContent" class="roomContent"
+							style="display: none; position: absolute; z-index: 200;">
+							<ul id="treeDemo" class="ztree tree-box" style="width: 249px !important;"></ul>
+						</div>
+                        <div class="hidden-xs" id="RepairsFormTable_doneToolbar" role="group">
+                                <#button name="详情" icon="fa-edit" clickFun="RepairsForm.openDetailRepairsForm()" space="true"/>
+                        </div>
+                        <#table id="RepairsFormTable_done"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="${ctxPath}/static/bmw/property/repairsForm/repairsForm_done.js"></script>
+@}

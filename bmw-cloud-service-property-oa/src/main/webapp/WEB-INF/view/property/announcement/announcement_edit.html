@@ -1,0 +1,34 @@
+@layout("/common/_container.html"){
+<div class="ibox float-e-margins">
+	<div class="ibox-content">
+		<div class="form-horizontal" id="announcementForm">
+
+			<input type="hidden" id="id" value="${item.id}">
+
+			<div class="row">
+				<div class="col-sm-12" >
+					<strong style="width:135px !important;float:left;display:block;text-align:right;">标题:</strong>
+					<#input class="form-control" style="width:250px !important;margin-top:-25px;"  name="" id="title" value="${item.title}" />
+				</div>
+				<div style="height:40px;"></div>
+				<div class="col-sm-12" >
+					<strong style="width:135px !important;float:left;display:block;text-align:right;">内容:</strong>
+					<textarea class="form-control" id="content" name="content"  style="width:250px !important;margin-top:-25px;" rows="4">${item.content}</textarea>
+				</div>
+			</div>
+
+			<div class="row btn-group-m-t">
+				<div class="col-sm-10">
+					<#button btnCss="info" name="提交" id="ensure" icon="fa-check"
+						clickFun="AnnouncementInfoDlg.editSubmit()" />
+					<#button btnCss="danger" name="取消" id="cancel" icon="fa-eraser"
+						clickFun="AnnouncementInfoDlg.close()" />
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<script
+	src="${ctxPath}/static/bmw/property/announcement/announcement_info.js"></script>
+@}
